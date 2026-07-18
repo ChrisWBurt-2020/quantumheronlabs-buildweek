@@ -1,0 +1,10 @@
+{
+  "name": "@heron/companion-sdk",
+  "version": "2.0.0",
+  "files": {
+    "heron-companion.esm.js": "sha256-WqK3iKyyNAHABnpuQ86Z2yPDuZixmQ3oSFRu4AelWq4=",
+    "heron-companion.iife.js": "sha256-eYUMUMOqc8I7DJrt+5EMkd43PewEqLYLvn3lBJFslw8=",
+    "heron-companion.css": "sha256-krRrp883ILNR4HNl74xYqT9bYyZFOsXxJ1wNXLVsdDw=",
+    "quantum-heron.svg": "sha256-SWzURd7VNCHxO4KEdvpRyQM1KZkOb6a8VjFXTr4MDDA="
+  }
+}

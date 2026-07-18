@@ -74,6 +74,7 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - `script.js` — mobile navigation, progressive reveal, and interactive loop demo
 - `nginx.conf` — static serving, health check, caching, CSP, and security headers
 - `Dockerfile` / `docker-compose.yml` — independent production runtime
+- `deploy/quantumheronlabs.com.conf` — source-controlled host Nginx proxy configuration
 
 ## Accessibility and performance
 
@@ -87,4 +88,3 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 ## Disclosure
 
 HeronFeed and Heron Learn include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. TruthCast is clearly labeled in development; the interface shown on the landing page is a concept preview, not a live product claim.
-

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Quantum Heron</title>
+  <desc id="desc">A heron moving through intersecting quantum orbits.</desc>
+  <rect x="2" y="2" width="92" height="92" rx="24" fill="#d9ff5b" stroke="#121816" stroke-width="2"/>
+  <g fill="none" stroke="#121816" stroke-width="1.5" opacity=".48">
+    <ellipse cx="48" cy="48" rx="38" ry="17" transform="rotate(-24 48 48)"/>
+    <ellipse cx="48" cy="48" rx="38" ry="17" transform="rotate(28 48 48)"/>
+  </g>
+  <circle cx="16" cy="47" r="3" fill="#ff7448" stroke="#121816"/>
+  <circle cx="79" cy="24" r="2.5" fill="#9dd9ff" stroke="#121816"/>
+  <g fill="#121816">
+    <path d="M23 61C24 49 34 42 48 43c14 1 22 10 20 21-2 10-11 16-24 16-14 0-23-7-21-19Z"/>
+    <path d="M49 51c-8-8-9-17 1-22 9-5 10-11 5-16" fill="none" stroke="#121816" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="57" cy="13" r="7"/>
+    <path d="m62 10 25 5-24 6Z"/>
+    <path d="M34 53c10-7 22-4 26 6-11-1-19 3-25 11-5-5-6-11-1-17Z" fill="#f4f2e9"/>
+    <circle cx="59" cy="11.5" r="1.5" fill="#d9ff5b"/>
+    <path d="M39 77v12m15-12v12M34 89h10m6 0h10" fill="none" stroke="#121816" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -34,6 +34,8 @@ Heron predates the event, so the submission explicitly separates prior work from
 
 The timestamped product commit history lives in the primary application repository. This repository contains the public submission site and its deployment boundary.
 
+See [`SUBMISSION.md`](./SUBMISSION.md) for the judging-criteria map, three-minute demo storyboard, deadline checklist, and highest-risk gaps.
+
 ## Codex and GPT-5.6
 
 Codex was used as an engineering and design partner for repository analysis, implementation, browser QA, deployment diagnosis, release hardening, documentation, and construction of this site.

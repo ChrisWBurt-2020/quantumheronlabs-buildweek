@@ -16,6 +16,8 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+#heron-particles { position: fixed; inset: 0; z-index: 0; width: 100vw; height: 100vh; pointer-events: none; opacity: .72; }
+body > *:not(#heron-particles) { position: relative; z-index: 1; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; }
 svg { display: block; }
@@ -357,4 +359,3 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
-

@@ -105,4 +105,3 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 2. **Repository scope:** this repository contains the landing site; the submission must also expose the working application code for judging.
 3. **Judge friction:** both live apps currently require verified email. Provide a test account or sandbox so a judge reaches value without creating an account.
 4. **TruthCast scope:** keep it clearly labeled in development and spend demo time on the two working products.
-

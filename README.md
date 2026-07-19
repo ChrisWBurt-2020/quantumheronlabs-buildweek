@@ -1,12 +1,15 @@
 # Heron — OpenAI Build Week 2026
 
-The public landing page for Quantum Heron Labs' OpenAI Build Week submission: a personal intelligence loop that connects **HeronFeed**, **Heron Learn**, and the developing **TruthCast** vision.
+The public landing page for Quantum Heron Labs' OpenAI Build Week submission: a personal intelligence loop connecting **HeronFeed**, **Heron Learn**, **HeronWatch**, **HeronClient**, and **Heron Graph**.
 
 ## Live experience
 
 - Submission landing page: <https://quantumheronlabs.com>
 - HeronFeed: <https://heronfeed.quantumheronlabs.com>
 - Heron Learn: <https://learn.quantumheronlabs.com>
+- HeronWatch: <https://watch.quantumheronlabs.com>
+- HeronClient: <https://heronclient.quantumheronlabs.com>
+- Heron Graph: <https://graph.quantumheronlabs.com>
 - Track: **Apps for Your Life**
 
 ## The idea
@@ -16,7 +19,9 @@ Most feeds end at consumption. Heron turns useful reading into a deliberate loop
 1. **HeronFeed** lets one person control their sources, scan the open web, and choose what matters.
 2. **GPT-5.6** structures selected source packets into explanations, counterarguments, questions, and learning prompts.
 3. **Heron Learn** turns those ideas into short guided sessions, active recall, and spaced review.
-4. **TruthCast** is the in-development extension toward evidence-aware, second-screen context for media.
+4. **HeronWatch** provides a production-ready observation surface whose deeper signal model remains intentionally forthcoming.
+5. **HeronClient** turns shared context into private agent conversations, artifacts, and bounded automations.
+6. **Heron Graph** reveals the cross-system relationships connecting sources, learning, and work.
 
 The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI.
 
@@ -31,6 +36,8 @@ Heron predates the event, so the submission explicitly separates prior work from
 - Recovered cross-device account confirmation and hardened deployed permissions/secrets.
 - Established protected build, approval, and release paths.
 - Built this public submission story and independent production container with Codex.
+- Added canonical cross-app navigation across all five surfaces and launched HeronWatch.
+- Reworked Heron Graph navigation, labels, touch controls, synthesis, and Companion SDK access.
 
 The timestamped product commit history lives in the primary application repository. This repository contains the public submission site and its deployment boundary.
 
@@ -89,4 +96,4 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 
 ## Disclosure
 
-HeronFeed and Heron Learn include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. TruthCast is clearly labeled in development; the interface shown on the landing page is a concept preview, not a live product claim.
+HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch's infrastructure and surface are live; its deeper behavior is clearly described as forthcoming.

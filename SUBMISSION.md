@@ -11,7 +11,7 @@
 - **Live demo:** <https://quantumheronlabs.com>
 - **Public site repository:** <https://github.com/ChrisWBurt-2020/quantumheronlabs-buildweek>
 
-Apps for Your Life is the strongest fit because the primary audience is an individual managing everyday attention and learning. Education is plausible, but it describes only Heron Learn and weakens the larger Feed → Learn → TruthCast story.
+Apps for Your Life is the strongest fit because the primary audience is an individual managing everyday attention, learning, and action. Education is plausible, but it describes only Heron Learn and weakens the larger Feed → Learn → Client → Graph story.
 
 ## Problem and solution
 
@@ -27,7 +27,8 @@ Heron gives one person a deliberate loop:
 2. Select a signal worth understanding.
 3. Use GPT-5.6 to structure the source packet into explanations, counterarguments, questions, and learning prompts.
 4. Move the idea into Heron Learn for short guided practice and spaced recall.
-5. Extend the philosophy toward evidence-aware media context through the developing TruthCast vision.
+5. Use HeronClient to turn context into private agent work, and Heron Graph to inspect the relationships across the system.
+6. Keep HeronWatch available as the observation surface while its deeper signal model is defined.
 
 ## What changed during July 13–21
 
@@ -68,7 +69,7 @@ The four criteria are equally weighted.
 
 - Lead with the closed loop, not three separate products.
 - Contrast Heron with both algorithmic feeds and generic AI summarizers: the user controls entry, and useful signals become scheduled learning.
-- Present TruthCast as the future extension of the same provenance-forward idea, not as a finished feature.
+- Present HeronWatch honestly: its production surface is live, while its deeper observation behavior remains forthcoming.
 
 ## Three-minute video storyboard
 
@@ -81,7 +82,7 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 | 0:55–1:25 | Enrichment result and GPT-5.6 structure | Show explanation, steelman/counterargument, and generated learning prompts; name GPT-5.6 directly. |
 | 1:25–1:55 | Send to Heron Learn and start a short session | The selected idea becomes guided practice and active recall rather than another forgotten save. |
 | 1:55–2:15 | Shared identity and progress | One verified account joins the two live apps while progress remains local-first with optional sync. |
-| 2:15–2:35 | TruthCast concept section | Explain the evidence-aware second-screen direction and state clearly that it is in development. |
+| 2:15–2:35 | HeronClient, Graph, and Watch | Show agent action and graph synthesis; identify Watch as a live foundation with forthcoming context. |
 | 2:35–2:55 | Build Week section and repository | Name what Codex accelerated, show dated commits, and identify the submission-period work. |
 | 2:55–3:00 | Landing CTA | Close with: “Read less. Learn more. Keep what matters.” |
 
@@ -104,4 +105,4 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 1. **GPT-5.6 evidence:** the public story is ready, but judges need the actual model call path in code and in the video.
 2. **Repository scope:** this repository contains the landing site; the submission must also expose the working application code for judging.
 3. **Judge friction:** both live apps currently require verified email. Provide a test account or sandbox so a judge reaches value without creating an account.
-4. **TruthCast scope:** keep it clearly labeled in development and spend demo time on the two working products.
+4. **Demo scope:** prioritize the working Feed → Learn path, then use Client and Graph to prove the wider system; keep Watch's forthcoming behavior explicit.

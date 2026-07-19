@@ -42,6 +42,8 @@ Current rollout note (2026-07-19): the dedicated production adapter reached Open
 
 The dedicated judge identity is email-verified and OIDC-provisioned, its credentials are stored outside Git, and the golden article is seeded. A fresh-browser test confirmed that sign-in preserves `?buildweek=1` and opens directly on the retrieval-practice article.
 
+The apex now serves a valid XML sitemap instead of falling through to HTML. The updated canonical URL and its public ownership key were submitted to the IndexNow global endpoint and accepted with HTTP 202. Google still requires an owner-console recrawl request; its currently indexed snippet remains the older enterprise page.
+
 ## Honest scope
 
 - Feed→Learn, shared identity, Graph, receipt continuity, and deterministic Client actions are implemented and integration-tested. The live GPT-backed entry remains gated because the production OpenAI request did not complete.

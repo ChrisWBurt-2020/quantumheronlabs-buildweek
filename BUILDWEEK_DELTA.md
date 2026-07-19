@@ -29,14 +29,14 @@ This is the target transaction, not yet a public claim: the production feature f
 
 ## Build Week authorship record
 
-Fill commit hashes and exported Codex session URLs immediately before submission; they are intentionally not fabricated here.
+Implementation commit hashes are recorded below. Add exported Codex session URLs immediately before submission; those links are intentionally not fabricated here.
 
 | Feature group | Commit | Codex session | GPT‑5.6 role |
 |---|---|---|---|
-| Knowledge object/event spine | pending commit | pending export | None; deterministic storage and transitions |
-| GPT‑5.6 structured synthesis | pending commit | pending export | Produces only the versioned semantic packet |
-| Learn, Graph, Client continuity + receipt | pending commit | pending export | Consumes the validated packet; identity/state remain deterministic |
-| Judge seed, tests, and delivery consistency | pending commit | pending export | Reproduction and trace verification |
+| Knowledge object/event spine | `3105f320` | pending export | None; deterministic storage and transitions |
+| GPT‑5.6 structured synthesis | `fc2229d4` | pending export | Produces only the versioned semantic packet |
+| Learn, Graph, Client continuity + receipt | `26655a5c` | pending export | Consumes the validated packet; identity/state remain deterministic |
+| Judge seed, tests, and delivery consistency | `fd0a3ac7`, `980d59f` | pending export | Reproduction and trace verification |
 
 Current rollout note (2026-07-19): the dedicated production adapter reached OpenAI but the configured project returned HTTP 429 `quota exceeded`. The public site therefore says “OpenAI” rather than claiming GPT‑5.6. Restore project quota, run the golden path, and verify `model=gpt-5.6`, a response ID, `status=completed`, and `validated=true` in the receipt before enabling the exact-model copy.
 

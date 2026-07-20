@@ -1,0 +1,29 @@
+{
+  "surface": "client",
+  "sourceRepository": "services/heronclient-v2",
+  "sourceGitRoot": "exocortex-hub",
+  "sourceCommit": "c93964ab741462a38f33daf085b4c133745b6f40",
+  "sourceReleaseCommit": "26f30e28",
+  "sourceTreeState": "dirty",
+  "sourceDiffSha256": "72a760cd3f8aaf976c840bdfd5679aeceaf58c27c3846ae2ce713eb0c9138d55",
+  "sourceRoute": "/",
+  "fixtureState": "privacy-safe signed-out welcome state",
+  "captureDate": "2026-07-20",
+  "captureWorkflow": "Validate the existing Playwright artifacts, then convert them losslessly in layout to WebP with Sharp.",
+  "captures": [
+    {
+      "kind": "desktop",
+      "viewport": { "width": 1440, "height": 1000 },
+      "sourceArtifact": "output/playwright/heronclient-v2-welcome-desktop.png",
+      "sourceSha256": "705b0b630126c453b1ff3a74460ece882c957b7e3f89a48305a7c478133c1a8f",
+      "asset": "/assets/product/client/heron-client-desktop.webp"
+    },
+    {
+      "kind": "mobile",
+      "viewport": { "width": 390, "height": 844 },
+      "sourceArtifact": "output/playwright/heronclient-v2-welcome-mobile.png",
+      "sourceSha256": "c7f7726f12b783b6e5ced8e17199581bc42b707a64b46af4ad0c512ca31a53da",
+      "asset": "/assets/product/client/heron-client-mobile.webp"
+    }
+  ]
+}

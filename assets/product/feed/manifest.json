@@ -1,0 +1,29 @@
+{
+  "surface": "feed",
+  "sourceRepository": "services/heronfeed",
+  "sourceGitRoot": "exocortex-hub",
+  "sourceCommit": "c93964ab741462a38f33daf085b4c133745b6f40",
+  "sourceReleaseCommit": "7a5c5abc",
+  "sourceTreeState": "dirty",
+  "sourceDiffSha256": "afa036991454f2bdd14ef2531d1a16a107ed3eca85dc6ae400e7dd5bdac79520",
+  "sourceRoute": "/?demo=public&capture=article&theme=light#article/heron-public-demo-feedback-loop",
+  "fixtureState": "public-v1 fixed article fixture; sessions, database, RSS, AI providers, Learn, Companion, and service worker bypassed",
+  "captureDate": "2026-07-20",
+  "captureCommand": "npm run capture:public-demo",
+  "captures": [
+    {
+      "kind": "desktop",
+      "viewport": { "width": 1440, "height": 1000 },
+      "sourceArtifact": "services/heronfeed/output/playwright/heronfeed-public-demo-desktop.png",
+      "sourceSha256": "4fd6d419062de4ea6f0ae96638661d8f31dfc2d36f5888955c5e25498f427f7b",
+      "asset": "/assets/product/feed/heron-feed-desktop.webp"
+    },
+    {
+      "kind": "mobile",
+      "viewport": { "width": 390, "height": 844 },
+      "sourceArtifact": "services/heronfeed/output/playwright/heronfeed-public-demo-mobile.png",
+      "sourceSha256": "2bea850ad7d40488b5617803e0263ae0fc76201adfb82994c15847fbd609f847",
+      "asset": "/assets/product/feed/heron-feed-mobile.webp"
+    }
+  ]
+}

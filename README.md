@@ -14,14 +14,14 @@ The public landing page for Quantum Heron Labs' OpenAI Build Week submission: a 
 
 ## The idea
 
-Most feeds end at consumption. Heron turns useful reading into a deliberate loop:
+Most media ends at consumption. HeronWatch turns a selected source into a deliberate, inspectable loop:
 
-1. **HeronFeed** lets one person control their sources, scan the open web, and choose what matters.
-2. **GPT-5.6** structures selected source packets into explanations, counterarguments, questions, and learning prompts.
-3. **Heron Learn** turns those ideas into short guided sessions, active recall, and spaced review.
-4. **HeronWatch** provides a production-ready observation surface whose deeper signal model remains intentionally forthcoming.
-5. **HeronClient** turns shared context into private agent conversations, artifacts, and bounded automations.
-6. **Heron Graph** reveals the cross-system relationships connecting sources, learning, and work.
+1. **HeronWatch** synchronizes media with Understand, Verify, and Use projections plus the Credibility Hub lens.
+2. **GPT-5.6** produces schema-constrained semantic objects while provenance retains exact segments, retrieval, inference, and uncertainty.
+3. **HeronFeed** records an account-scoped attention signal and related-source context.
+4. **Heron Graph** materializes the selected claims, concepts, entities, evidence, and relationships.
+5. **Heron Learn** schedules a source-evaluation or retrieval LearningUnit.
+6. **HeronClient** creates a private draft ActionIntent while approval policy continues to govern execution.
 
 The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI.
 
@@ -38,6 +38,7 @@ Heron predates the event, so the submission explicitly separates prior work from
 - Built this public submission story and independent production container with Codex.
 - Added canonical cross-app navigation across all five surfaces and launched HeronWatch.
 - Reworked Heron Graph navigation, labels, touch controls, synthesis, and Companion SDK access.
+- Built the Heron Cognitive Runtime, versioned contracts, Watch workspace, private capsules, Cognitive Receipts, and idempotent five-surface projections.
 
 The timestamped product commit history lives in the primary application repository. This repository contains the public submission site and its deployment boundary.
 
@@ -48,6 +49,8 @@ See [`SUBMISSION.md`](./SUBMISSION.md) for the judging-criteria map, three-minut
 Codex was used as an engineering and design partner for repository analysis, implementation, browser QA, deployment diagnosis, release hardening, documentation, and construction of this site.
 
 GPT-5.6 is used at the synthesis boundary: turning material a user has deliberately selected into structured explanations, steelman views, questions, and learning prompts. The surrounding system stays deterministic and inspectable.
+
+The QHL-owned public demo script is narrated with an AI-generated OpenAI built-in voice; the transcript and timed captions are included with the source asset.
 
 Before final submission, the Devpost entry should include:
 
@@ -96,4 +99,4 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 
 ## Disclosure
 
-HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch's infrastructure and surface are live; its deeper behavior is clearly described as forthcoming.
+HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch and its public precomputed demo are live. The submission distinguishes live model runs, precomputed packets, and non-model fallbacks, and does not claim unfinished archetypal lenses.

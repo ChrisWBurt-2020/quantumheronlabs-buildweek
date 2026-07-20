@@ -5,9 +5,9 @@
 ## Recommended framing
 
 - **Project name:** Heron
-- **Submission title:** Heron — From signal to memory
+- **Submission title:** HeronWatch — Meaning without losing the source
 - **Track:** Apps for Your Life
-- **One line:** A personal intelligence loop that turns the sources you choose into explanations, practice, and durable recall.
+- **One line:** A provenance-first interpretation workspace that turns source media into inspectable understanding, durable memory, and controlled action.
 - **Live demo:** <https://quantumheronlabs.com>
 - **Public site repository:** <https://github.com/ChrisWBurt-2020/quantumheronlabs-buildweek>
 
@@ -23,17 +23,19 @@ Online feeds are optimized to keep people consuming. Useful reading is fragmente
 
 Heron gives one person a deliberate loop:
 
-1. Choose and scan sources in HeronFeed.
-2. Select a signal worth understanding.
-3. Use GPT-5.6 to structure the source packet into explanations, counterarguments, questions, and learning prompts.
-4. Move the idea into Heron Learn for short guided practice and spaced recall.
-5. Use HeronClient to turn context into private agent work, and Heron Graph to inspect the relationships across the system.
-6. Keep HeronWatch available as the observation surface while its deeper signal model is defined.
+1. Open source media in HeronWatch and keep the player, timeline, and interpretation synchronized.
+2. Choose Understand, Verify, or Use and optionally apply the Credibility Hub lens.
+3. Compile the source into typed semantic objects with segment-level provenance and calibrated uncertainty.
+4. Carry one selected object into Feed attention, a Graph evidence neighborhood, and a scheduled Learn unit under one trace.
+5. Create a private draft ActionIntent in HeronClient; execution remains approval-controlled.
 
 ## What changed during July 13–21
 
 The final entry must distinguish this work from the pre-existing project and link each claim to a dated commit or Codex session:
 
+- HeronWatch theatre-first player, cognitive gradient, intent modes, Credibility Hub, Why traces, and Cognitive Receipt
+- Shared cognitive contracts and provenance-first runtime
+- Real, idempotent Feed, Graph, Learn, and Client materialization under one trace
 - Heron Learn redesign and canonical-domain production launch
 - Feed-to-Learn reinforcement integration
 - Unified verified account across HeronFeed and Learn
@@ -48,14 +50,14 @@ The four criteria are equally weighted.
 
 ### Technological implementation
 
-- Show a real Feed → Enrich → Learn flow, not only the landing page.
+- Show a real Watch → Feed → Graph → Learn → Client trace, not only the landing page.
 - Show the GPT-5.6 request, structured output contract, and where the result enters deterministic code.
 - Point to dated commits and the primary Codex `/feedback` session.
 - Explain one technical decision Codex helped surface and one decision you changed or rejected.
 
 ### Design
 
-- Start the video on the landing page, then move immediately into the two live apps.
+- Start directly in Watch's public demo, then move through the four trace-scoped projections.
 - Use one shared account and one coherent sample topic throughout the demo.
 - Avoid setup time on camera; pre-load the source and learning state.
 
@@ -67,9 +69,9 @@ The four criteria are equally weighted.
 
 ### Quality of the idea
 
-- Lead with the closed loop, not three separate products.
+- Lead with one source, one semantic object, and one trace—not five separate apps.
 - Contrast Heron with both algorithmic feeds and generic AI summarizers: the user controls entry, and useful signals become scheduled learning.
-- Present HeronWatch honestly: its production surface is live, while its deeper observation behavior remains forthcoming.
+- Present model provenance honestly: distinguish live model output, precomputed model output, and curated or extractive fallback.
 
 ## Three-minute video storyboard
 
@@ -77,19 +79,17 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 
 | Time | Show | Say |
 | --- | --- | --- |
-| 0:00–0:20 | Landing-page hero and loop animation | The problem: feeds capture attention but do not build durable understanding. |
-| 0:20–0:55 | HeronFeed source scan and selected item | The user controls sources and chooses what deserves deeper attention. |
-| 0:55–1:25 | Enrichment result and GPT-5.6 structure | Show explanation, steelman/counterargument, and generated learning prompts; name GPT-5.6 directly. |
-| 1:25–1:55 | Send to Heron Learn and start a short session | The selected idea becomes guided practice and active recall rather than another forgotten save. |
-| 1:55–2:15 | Shared identity and progress | One verified account joins the two live apps while progress remains local-first with optional sync. |
-| 2:15–2:35 | HeronClient, Graph, and Watch | Show agent action and graph synthesis; identify Watch as a live foundation with forthcoming context. |
-| 2:35–2:55 | Build Week section and repository | Name what Codex accelerated, show dated commits, and identify the submission-period work. |
-| 2:55–3:00 | Landing CTA | Close with: “Read less. Learn more. Keep what matters.” |
+| 0:00–0:18 | HeronWatch player and cognitive gradient | Passive media becomes source-synchronized, inspectable understanding. |
+| 0:18–0:50 | Switch Verify → Credibility Hub | The lens changes the runtime constraints and the claim-oriented interface together. |
+| 0:50–1:20 | Seek an intervention and open Why | Show the exact segment, evidence, counterevidence, uncertainty, hashes, and inference path. |
+| 1:20–2:12 | Open Feed, Graph, Learn, and Client projections | One selection creates real destination objects with the same trace; Client remains a draft. |
+| 2:12–2:38 | Cognitive Receipt and private capsule | Summarize supported, uncertain, worth-learning, and available-action sections. |
+| 2:38–2:55 | Runtime, GPT-5.6, and Codex evidence | Show Structured Outputs, deterministic contracts, dated code, and the primary Codex session. |
 
 ## Required before July 21 at 5:00 PM Pacific
 
 - [ ] Register/join and create the Devpost draft now.
-- [ ] Verify the production Feed → GPT-5.6 → Learn path works exactly as narrated.
+- [ ] Verify the production Watch → GPT‑5.6 → four-surface materialization path works exactly as narrated.
 - [ ] Put explicit GPT-5.6 evidence and reproducible test guidance in the application-code README.
 - [ ] Retrieve the `/feedback` session ID from the primary Codex build task.
 - [ ] Record a narrated video of three minutes or less.
@@ -102,7 +102,7 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 
 ## Highest-risk gaps
 
-1. **GPT-5.6 evidence:** the public story is ready, but judges need the actual model call path in code and in the video.
+1. **GPT-5.6 evidence:** do not label a curated or extractive packet as model output; judges need one completed, validated response ID in code and video.
 2. **Repository scope:** this repository contains the landing site; the submission must also expose the working application code for judging.
 3. **Judge friction:** both live apps currently require verified email. Provide a test account or sandbox so a judge reaches value without creating an account.
-4. **Demo scope:** prioritize the working Feed → Learn path, then use Client and Graph to prove the wider system; keep Watch's forthcoming behavior explicit.
+4. **Demo scope:** precompute the public trace and use authenticated writes only for the judge test path so model or network latency cannot break the recording.

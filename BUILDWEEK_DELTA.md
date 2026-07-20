@@ -4,20 +4,22 @@ This document is the evidence map for the July 2026 submission. The intended pub
 
 ## Judge path
 
-1. Sign in with the verified account listed only in the private Devpost testing instructions.
-2. Open `https://heronfeed.quantumheronlabs.com/?buildweek=1`.
-3. On the golden retrieval-practice article, choose **Turn this into knowledge**.
-4. Open **Heron Receipt** and verify `signal.captured` → `signal.structured`, exact model metadata, schema validation, source, and correlation ID.
-5. Choose **Open in Learn**, reveal the retrieval answer, and rate it **Again** or **Good**.
-6. Open Graph and inspect the latest compact concept neighborhood. The same receipt adds `learning.generated`, `review.completed`, and `concept.linked`.
-7. Open Client and choose **Get next action**. The deterministic action and `action.created` event close the loop.
+1. Open the anonymous HeronWatch demo; it performs no model call or persistent write.
+2. Switch to **Verify** and **Credibility Hub**, seek an intervention, and inspect its timestamped Why trace.
+3. Sign in with the verified account listed only in the private Devpost instructions to test private materialization.
+4. Carry one selected object into Feed, Graph, Learn, and Client.
+5. Verify each destination contains a real object with the same trace and a back-link to the exact Watch capsule and segment.
+6. Confirm Client created only a draft ActionIntent and that repeated handoffs do not duplicate destination state.
+7. Open the Cognitive Receipt and verify supported, uncertain, learning, and action sections plus truthful engine metadata.
 
-This is the target transaction, not yet a public claim: the production feature flag remains off until the OpenAI quota blocker described below is cleared and a real `gpt-5.6` receipt passes validation.
+The Structured Outputs release gate passed on July 20, 2026. The recorded receipt contains a completed response ID, schema-v2 validation, and the resolved model returned by OpenAI; the curated public demo remains model-free.
 
 ## Change map
 
 | Prior state | Build Week change | Evidence / reproduction |
 |---|---|---|
+| Watch was a static foundation with no cognitive runtime. | HeronWatch now provides a synchronized media workspace, Understand/Verify/Use intents, Adaptive/Credibility Hub lenses, segment-level Why traces, Cognitive Receipts, and private capsules. | Open the public Watch demo, switch to Verify + Credibility Hub, seek a timeline intervention, and inspect Why. |
+| Watch handoffs returned destination-looking links without destination state. | Account-scoped SurfaceProjections materialize idempotent Feed signals, Graph neighborhoods, Learn units, and Client draft intents under one trace. | Repeat the same authenticated handoff and verify the same destination ID/deep link is returned. |
 | Feed enrichment used the provider-flexible router and did not prove the named model. | A dedicated server adapter calls the Responses API with `gpt-5.6`, strict Structured Outputs, no provider fallback, timeout/refusal/incomplete/schema handling, and persisted response metadata. | `services/heronfeed/server/gpt56-knowledge.js`; `npm test` in `services/heronfeed`. |
 | Feed→Learn passed an opportunity but not one durable cross-app identity. | Account-scoped knowledge object + append-only event receipt, content dedupe, event idempotency, correlation ID, and transactional outbox writes. | `migrations/040_knowledge_objects.sql`; `services/heronclient-v2/src/knowledge.ts`. |
 | Learn import was acknowledgement-only. | Learn receives retrieval questions, records `learning.generated`, grades active recall, and deterministically schedules the next review. | Open the generated Learn import URL and rate one recall item. |
@@ -38,7 +40,7 @@ Implementation commit hashes are recorded below. Add exported Codex session URLs
 | Learn, Graph, Client continuity + receipt | `26655a5c` | pending export | Consumes the validated packet; identity/state remain deterministic |
 | Judge seed, tests, and delivery consistency | `fd0a3ac7`, `c52ee45f`, `e3862a31`, `980d59f`, `a4385f7` | pending export | Reproduction and trace verification |
 
-Current rollout note (2026-07-19): the dedicated production adapter reached OpenAI but the configured project returned HTTP 429 `quota exceeded`. The public site therefore says “OpenAI” rather than claiming GPT‑5.6. Restore project quota, run the golden path, and verify `model=gpt-5.6`, a response ID, `status=completed`, and `validated=true` in the receipt before enabling the exact-model copy.
+Current rollout note (2026-07-20): the release-gate call through the `gpt-5.6` alias completed and returned `gpt-5.6-sol`, a response ID, three schema-valid objects, and `validated=true`. The receipt is stored without source text or model output at `services/heron-runtime/BUILDWEEK_MODEL_RECEIPT.json`.
 
 The dedicated judge identity is email-verified and OIDC-provisioned, its credentials are stored outside Git, and the golden article is seeded. A fresh-browser test confirmed that sign-in preserves `?buildweek=1` and opens directly on the retrieval-practice article.
 
@@ -46,7 +48,7 @@ The apex now serves a valid XML sitemap instead of falling through to HTML. The 
 
 ## Honest scope
 
-- Feed→Learn, shared identity, Graph, receipt continuity, and deterministic Client actions are implemented and integration-tested. The live GPT-backed entry remains gated because the production OpenAI request did not complete.
-- Watch is a live production foundation and remains outside the judged transaction; deeper observation behavior is forthcoming.
-- Public GPT‑5.6 wording should be enabled only after a production receipt shows that exact model on the demonstrated run.
+- Feed→Learn, shared identity, Graph, receipt continuity, deterministic Client actions, and the live schema-v2 model path are implemented and integration-tested.
+- Watch is the judged entry point; Adaptive and Credibility Hub are the only exposed lenses, and unfinished archetypes remain out of scope.
+- The runtime requests the stable `gpt-5.6` alias and preserves the exact resolved model returned by OpenAI in run provenance.
 - The post-submission production backlog remains: dedicated outbox consumers with retry/DLQ, correlation dashboards, memory exclusion/export/deletion controls, generalized `video_moment` ingestion, and Graph bundle splitting.

@@ -1,6 +1,6 @@
-# Heron — OpenAI Build Week 2026
+# Heron — Your private AI exocortex
 
-The public landing page for Quantum Heron Labs' OpenAI Build Week submission: a personal intelligence loop connecting **HeronFeed**, **Heron Learn**, **HeronWatch**, **HeronClient**, and **Heron Graph**.
+The independently deployable landing page for Quantum Heron Labs' OpenAI Build Week submission: one private, provenance-first system connecting **HeronFeed**, **Heron Learn**, **HeronWatch**, **HeronClient**, and **Heron Graph**.
 
 ## Live experience
 
@@ -23,7 +23,7 @@ Most media ends at consumption. HeronWatch turns a selected source into a delibe
 5. **Heron Learn** schedules a source-evaluation or retrieval LearningUnit.
 6. **HeronClient** creates a private draft ActionIntent while approval policy continues to govern execution.
 
-The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI.
+The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI. Cross-surface links use a versioned context envelope so trace, capsule, source, and semantic-object identity can survive the transition without exposing private destination IDs.
 
 ## What is new during Build Week
 
@@ -84,6 +84,7 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - `index.html` — semantic landing-page structure and submission narrative
 - `styles.css` — responsive visual system with no external font or asset dependency
 - `script.js` — mobile navigation, progressive reveal, and interactive loop demo
+- `assets/product/<surface>/` — real, privacy-reviewed desktop/mobile captures plus a source manifest for every surface
 - `nginx.conf` — static serving, health check, caching, CSP, and security headers
 - `Dockerfile` / `docker-compose.yml` — independent production runtime
 - `deploy/quantumheronlabs.com.conf` — source-controlled host Nginx proxy configuration
@@ -94,9 +95,9 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - Keyboard-friendly links and controls
 - Reduced-motion support
 - Responsive layouts down to narrow mobile screens
-- No third-party JavaScript, tracking, font, or image requests
+- No third-party JavaScript, tracking, font, or image requests; all product imagery is local
 - Static assets served with caching and a restrictive Content Security Policy
 
 ## Disclosure
 
-HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch and its public precomputed demo are live. The submission distinguishes live model runs, precomputed packets, and non-model fallbacks, and does not claim unfinished archetypal lenses.
+HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch and its public precomputed demo are live. The submission distinguishes live model runs, precomputed packets, and non-model fallbacks, and does not claim unfinished archetypal lenses. Capture manifests record the source commit and dirty-tree fingerprint so the landing assets are auditable without pretending they came from a clean release commit.

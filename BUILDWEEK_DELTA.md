@@ -1,6 +1,6 @@
 # Heron Build Week Delta
 
-This document is the evidence map for the July 2026 submission. The intended public positioning remains “Read less. Learn more. Keep what matters.” The stale enterprise-agent page observed by one crawler was an origin/cache artifact, not the current product direction.
+This document is the evidence map for the July 2026 submission. The current public positioning is “Your private AI exocortex”: turn what you encounter into what you understand, retain, connect, and do—with receipts. The stale enterprise-agent page observed by one crawler was an origin/cache artifact, not the current product direction.
 
 ## Judge path
 
@@ -27,6 +27,9 @@ The Structured Outputs release gate passed on July 20, 2026. The recorded receip
 | Client did not close the knowledge loop. | Client chooses exactly one next action from review mastery and suggested actions, then records `action.created`. | Open Client → **Get next action**. |
 | Cross-app provenance required database inspection. | The Companion SDK exposes a shared Heron Receipt in Feed, Learn, Graph, and Client. | Use the companion’s **Receipt** action on each surface. |
 | Demo setup depended on ambient account/feed state. | An idempotent reset script verifies the demo account, resets its object state, and seeds one permitted, demo-owned article. | `HERON_DEMO_EMAIL=… DATABASE_URL=… scripts/buildweek-demo-reset.sh`. Credentials remain outside Git. |
+| Public Feed imagery depended on ambient account, RSS, provider, and cache state. | Feed now has a fixed `public-v1` article fixture and a repeatable 1440×1000 / 390×844 capture command that bypasses session, DB, RSS, AI, Learn, Companion, and service-worker activity. | `services/heronfeed/scripts/capture-public-demo.sh`; `npm run capture:public-demo`; fixture contract tests. |
+| Cross-surface URLs did not share one strict transport contract. | `HeronContextEnvelope` now serializes and validates versioned source/target surfaces plus trace, capsule, semantic object, projection, learning-unit, action-intent, and source context. | `packages/heron-cognitive-contracts`; contract typecheck, tests, and generated JSON Schema. |
+| The public story used illustrative approximations of the five products. | The landing now consumes responsive captures from the canonical apps, publishes per-surface source manifests, and exposes a trace-preserving three-minute path. Watch adopts the poster motif and canonical Companion build. | `assets/product/*/manifest.json`; landing desktop/mobile browser QA; Watch typecheck/build. |
 | `www` and apex could serve independently and crawlers retained stale copy. | Apex is canonical, `www` permanently redirects, HTML revalidates, versioned assets are immutable, and an OG image is declared in initial HTML. | `curl -I` apex and `www`; inspect the initial HTML head. |
 
 ## Build Week authorship record

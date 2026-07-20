@@ -1,24 +1,30 @@
-# Heron — OpenAI Build Week 2026
+# Heron — Your private AI exocortex
 
-The public landing page for Quantum Heron Labs' OpenAI Build Week submission: a personal intelligence loop that connects **HeronFeed**, **Heron Learn**, and the developing **TruthCast** vision.
+The independently deployable landing page for Quantum Heron Labs' OpenAI Build Week submission: one private, provenance-first system connecting **HeronFeed**, **Heron Learn**, **HeronWatch**, **HeronClient**, and **Heron Graph**.
 
 ## Live experience
 
 - Submission landing page: <https://quantumheronlabs.com>
+- Judge guide: <https://quantumheronlabs.com/?audience=judge#judge>
 - HeronFeed: <https://heronfeed.quantumheronlabs.com>
 - Heron Learn: <https://learn.quantumheronlabs.com>
+- HeronWatch: <https://watch.quantumheronlabs.com>
+- HeronClient: <https://heronclient.quantumheronlabs.com>
+- Heron Graph: <https://graph.quantumheronlabs.com>
 - Track: **Apps for Your Life**
 
 ## The idea
 
-Most feeds end at consumption. Heron turns useful reading into a deliberate loop:
+Most media ends at consumption. HeronWatch turns a selected source into a deliberate, inspectable loop:
 
-1. **HeronFeed** lets one person control their sources, scan the open web, and choose what matters.
-2. **GPT-5.6** structures selected source packets into explanations, counterarguments, questions, and learning prompts.
-3. **Heron Learn** turns those ideas into short guided sessions, active recall, and spaced review.
-4. **TruthCast** is the in-development extension toward evidence-aware, second-screen context for media.
+1. **HeronWatch** synchronizes media with Understand, Verify, and Use projections plus the Credibility Hub lens.
+2. **GPT-5.6** produces schema-constrained semantic objects while provenance retains exact segments, retrieval, inference, and uncertainty.
+3. **HeronFeed** records an account-scoped attention signal and related-source context.
+4. **Heron Graph** materializes the selected claims, concepts, entities, evidence, and relationships.
+5. **Heron Learn** schedules a source-evaluation or retrieval LearningUnit.
+6. **HeronClient** creates a private draft ActionIntent while approval policy continues to govern execution.
 
-The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI.
+The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI. Cross-surface links use a versioned context envelope so trace, capsule, source, and semantic-object identity can survive the transition without exposing private destination IDs. The five destination applications validate that envelope in the shared Companion SDK, preserve it across a reload, emit a `heron:context-received` browser event, and show a compact handoff receipt.
 
 ## What is new during Build Week
 
@@ -31,6 +37,9 @@ Heron predates the event, so the submission explicitly separates prior work from
 - Recovered cross-device account confirmation and hardened deployed permissions/secrets.
 - Established protected build, approval, and release paths.
 - Built this public submission story and independent production container with Codex.
+- Added canonical cross-app navigation across all five surfaces and launched HeronWatch.
+- Reworked Heron Graph navigation, labels, touch controls, synthesis, and Companion SDK access.
+- Built the Heron Cognitive Runtime, versioned contracts, Watch workspace, private capsules, Cognitive Receipts, and idempotent five-surface projections.
 
 The timestamped product commit history lives in the primary application repository. This repository contains the public submission site and its deployment boundary.
 
@@ -41,6 +50,8 @@ See [`SUBMISSION.md`](./SUBMISSION.md) for the judging-criteria map, three-minut
 Codex was used as an engineering and design partner for repository analysis, implementation, browser QA, deployment diagnosis, release hardening, documentation, and construction of this site.
 
 GPT-5.6 is used at the synthesis boundary: turning material a user has deliberately selected into structured explanations, steelman views, questions, and learning prompts. The surrounding system stays deterministic and inspectable.
+
+The QHL-owned public demo script is narrated with an AI-generated OpenAI built-in voice; the transcript and timed captions are included with the source asset.
 
 Before final submission, the Devpost entry should include:
 
@@ -60,6 +71,13 @@ python3 -m http.server 8080
 
 Then open <http://127.0.0.1:8080>.
 
+Validate the static structure, product assets, judge-mode entry, JavaScript syntax, and four context links with:
+
+```bash
+npm run lint
+npm test
+```
+
 ## Run with Docker
 
 ```bash
@@ -74,6 +92,8 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - `index.html` — semantic landing-page structure and submission narrative
 - `styles.css` — responsive visual system with no external font or asset dependency
 - `script.js` — mobile navigation, progressive reveal, and interactive loop demo
+- `package.json` / `scripts/validate-site.mjs` — dependency-free release checks for the static site
+- `assets/product/<surface>/` — real, privacy-reviewed desktop/mobile captures plus a source manifest for every surface
 - `nginx.conf` — static serving, health check, caching, CSP, and security headers
 - `Dockerfile` / `docker-compose.yml` — independent production runtime
 - `deploy/quantumheronlabs.com.conf` — source-controlled host Nginx proxy configuration
@@ -84,9 +104,9 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - Keyboard-friendly links and controls
 - Reduced-motion support
 - Responsive layouts down to narrow mobile screens
-- No third-party JavaScript, tracking, font, or image requests
+- No third-party JavaScript, tracking, font, or image requests; all product imagery is local
 - Static assets served with caching and a restrictive Content Security Policy
 
 ## Disclosure
 
-HeronFeed and Heron Learn include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. TruthCast is clearly labeled in development; the interface shown on the landing page is a concept preview, not a live product claim.
+HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch and its public precomputed demo are live. The submission distinguishes live model runs, precomputed packets, and non-model fallbacks, and does not claim unfinished archetypal lenses. Capture manifests record the source commit and dirty-tree fingerprint so the landing assets are auditable without pretending they came from a clean release commit.

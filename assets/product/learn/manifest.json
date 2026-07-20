@@ -1,0 +1,29 @@
+{
+  "surface": "learn",
+  "sourceRepository": "services/ae-path",
+  "sourceGitRoot": "exocortex-hub",
+  "sourceCommit": "c93964ab741462a38f33daf085b4c133745b6f40",
+  "sourceReleaseCommit": "c4f53a39",
+  "sourceTreeState": "dirty",
+  "sourceDiffSha256": "c77a7dfa1694e5159d388e935cb8e04f978ba57caf667180f01aee95b7861a34",
+  "sourceRoute": "/#/dashboard",
+  "fixtureState": "privacy-safe local Today dashboard",
+  "captureDate": "2026-07-20",
+  "captureWorkflow": "Validate the existing Playwright artifacts, then convert them losslessly in layout to WebP with Sharp.",
+  "captures": [
+    {
+      "kind": "desktop",
+      "viewport": { "width": 1280, "height": 720 },
+      "sourceArtifact": "services/ae-path/output/playwright/redesigned-today.png",
+      "sourceSha256": "5a12860221cd7a7b77bc0c3eb9a864e9357f5d5501eee39ee09486c76e8a00d3",
+      "asset": "/assets/product/learn/heron-learn-desktop.webp"
+    },
+    {
+      "kind": "mobile",
+      "viewport": { "width": 390, "height": 844 },
+      "sourceArtifact": "services/ae-path/output/playwright/redesigned-today-mobile.png",
+      "sourceSha256": "d5c120b5d634c38f4897dbd61dd15d09657f48f0efae3db15d3b6aefc2e845bf",
+      "asset": "/assets/product/learn/heron-learn-mobile.webp"
+    }
+  ]
+}

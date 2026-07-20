@@ -9,7 +9,9 @@
 - **Track:** Apps for Your Life
 - **One line:** A provenance-first interpretation workspace that turns source media into inspectable understanding, durable memory, and controlled action.
 - **Live demo:** <https://quantumheronlabs.com>
+- **Judge guide:** <https://quantumheronlabs.com/?audience=judge#judge>
 - **Public site repository:** <https://github.com/ChrisWBurt-2020/quantumheronlabs-buildweek>
+- **Application repository:** <https://github.com/ChrisWBurt-2020/exocortex-hub>
 
 Apps for Your Life is the strongest fit because the primary audience is an individual managing everyday attention, learning, and action. Education is plausible, but it describes only Heron Learn and weakens the larger Feed → Learn → Client → Graph story.
 
@@ -89,20 +91,21 @@ Keep the final video under three minutes, public on YouTube, and narrated. It mu
 ## Required before July 21 at 5:00 PM Pacific
 
 - [ ] Register/join and create the Devpost draft now.
-- [ ] Verify the production Watch → GPT‑5.6 → four-surface materialization path works exactly as narrated.
-- [ ] Put explicit GPT-5.6 evidence and reproducible test guidance in the application-code README.
+- [x] Verify the production Watch → GPT‑5.6 → four-surface materialization path works exactly as narrated.
+- [x] Put explicit GPT-5.6 evidence and reproducible test guidance in the application-code README.
 - [ ] Retrieve the `/feedback` session ID from the primary Codex build task.
 - [ ] Record a narrated video of three minutes or less.
 - [ ] Upload the video publicly to YouTube.
 - [ ] Add the correct application code repository, not only the landing-page repository.
 - [ ] If that repository stays private, share it with `testing@devpost.com` and `build-week-event@openai.com`.
-- [ ] Create a judge-ready test account or a no-friction sandbox and document credentials/instructions.
+- [x] Create and fresh-browser verify a judge-ready test account.
+- [ ] Paste the credentials and the `?buildweek=1` start URL into Devpost's private testing instructions (never commit them).
 - [ ] Verify all team members have accepted Devpost invitations before the deadline.
 - [ ] Submit in English and do a final rules check on Devpost.
 
-## Highest-risk gaps
+## Remaining submission risks
 
-1. **GPT-5.6 evidence:** do not label a curated or extractive packet as model output; judges need one completed, validated response ID in code and video.
-2. **Repository scope:** this repository contains the landing site; the submission must also expose the working application code for judging.
-3. **Judge friction:** both live apps currently require verified email. Provide a test account or sandbox so a judge reaches value without creating an account.
-4. **Demo scope:** precompute the public trace and use authenticated writes only for the judge test path so model or network latency cannot break the recording.
+1. **Devpost access:** the application repository and private judge-account instructions still need to be entered in the Devpost form.
+2. **Video/editorial evidence:** the final public YouTube video must show the validated GPT-5.6 receipt, the exact resolved model, and the public context receipts without presenting the deterministic fallback as model output.
+3. **Codex attribution:** add the primary `/feedback` session ID and explain one decision Codex influenced in the final human-edited submission copy.
+4. **Deadline controls:** confirm team invitations, English copy, public video visibility, and the final rules review before pressing Submit.

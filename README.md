@@ -5,6 +5,7 @@ The independently deployable landing page for Quantum Heron Labs' OpenAI Build W
 ## Live experience
 
 - Submission landing page: <https://quantumheronlabs.com>
+- Judge guide: <https://quantumheronlabs.com/?audience=judge#judge>
 - HeronFeed: <https://heronfeed.quantumheronlabs.com>
 - Heron Learn: <https://learn.quantumheronlabs.com>
 - HeronWatch: <https://watch.quantumheronlabs.com>
@@ -23,7 +24,7 @@ Most media ends at consumption. HeronWatch turns a selected source into a delibe
 5. **Heron Learn** schedules a source-evaluation or retrieval LearningUnit.
 6. **HeronClient** creates a private draft ActionIntent while approval policy continues to govern execution.
 
-The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI. Cross-surface links use a versioned context envelope so trace, capsule, source, and semantic-object identity can survive the transition without exposing private destination IDs.
+The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI. Cross-surface links use a versioned context envelope so trace, capsule, source, and semantic-object identity can survive the transition without exposing private destination IDs. The five destination applications validate that envelope in the shared Companion SDK, preserve it across a reload, emit a `heron:context-received` browser event, and show a compact handoff receipt.
 
 ## What is new during Build Week
 
@@ -70,6 +71,13 @@ python3 -m http.server 8080
 
 Then open <http://127.0.0.1:8080>.
 
+Validate the static structure, product assets, judge-mode entry, JavaScript syntax, and four context links with:
+
+```bash
+npm run lint
+npm test
+```
+
 ## Run with Docker
 
 ```bash
@@ -84,6 +92,7 @@ The container is read-only, drops all capabilities except the minimum Nginx runt
 - `index.html` — semantic landing-page structure and submission narrative
 - `styles.css` — responsive visual system with no external font or asset dependency
 - `script.js` — mobile navigation, progressive reveal, and interactive loop demo
+- `package.json` / `scripts/validate-site.mjs` — dependency-free release checks for the static site
 - `assets/product/<surface>/` — real, privacy-reviewed desktop/mobile captures plus a source manifest for every surface
 - `nginx.conf` — static serving, health check, caching, CSP, and security headers
 - `Dockerfile` / `docker-compose.yml` — independent production runtime

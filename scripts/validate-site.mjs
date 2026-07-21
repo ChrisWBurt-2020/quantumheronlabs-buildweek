@@ -83,6 +83,8 @@ for (const stale of ["welcome screen", "SIGNED-OUT ENTRY", "privacy-safe signed-
 }
 
 if (!html.includes('data-audience-link="judge"') || !html.includes('id="judge"')) errors.push("judge mode entry is missing");
+if (!html.includes("heron_guide=public") || !html.includes("demo=public")) errors.push("guided public entry is missing");
+if (!html.includes("heron_guide=judge") || !html.includes("heron_step=1")) errors.push("guided judge entry is missing");
 if (!html.includes('data-heron-app="quantum"') || !html.includes('data-anonymous="true"')) errors.push("public companion bootstrap is missing");
 for (const phrase of ["User-created domains", "Combinable archetypal", "multimodal"]) {
   if (!html.includes(phrase)) errors.push(`landing copy is missing implemented capability: ${phrase}`);

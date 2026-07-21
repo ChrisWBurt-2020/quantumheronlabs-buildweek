@@ -1,29 +1,16 @@
 {
   "surface": "watch",
-  "sourceRepository": "services/heronwatch",
-  "sourceGitRoot": "exocortex-hub",
-  "sourceCommit": "c93964ab741462a38f33daf085b4c133745b6f40",
-  "sourceReleaseCommit": "ba081bbb",
-  "sourceTreeState": "dirty",
-  "sourceDiffSha256": "0e2d1a908a3bcc5eed8e7b5df20a2fde85dc6ca2abe1234aace56607df1b3dfa",
-  "sourceRoute": "/",
-  "fixtureState": "anonymous precomputed QHL public demo from /api/v1/demo; no model call or persistent write",
-  "captureDate": "2026-07-20",
-  "captureWorkflow": "Playwright desktop and mobile QA against the production build, followed by WebP conversion with Sharp.",
+  "dataset": "trustworthy-agent-design-v1",
+  "sourceRepository": "/home/debian/testproj/services/heronwatch",
+  "sourceGitRoot": "/home/debian/testproj",
+  "sourceCommit": "09bd66a6",
+  "sourceTreeState": "clean (scoped repository; unrelated sewshore submodule excluded)",
+  "sourceRoute": "/?learning_domain=trustworthy-agent-design&archetype=genealogist&archetype=cross_examiner",
+  "fixtureState": "anonymous deterministic QHL capsule; public Save2Q preview only; no model call or write",
+  "captureCommand": "playwright-cli -s=watch-capture select source-grounded insight; screenshot desktop/mobile; cwebp -q 84",
+  "capturedAt": "2026-07-21T15:50:33Z",
   "captures": [
-    {
-      "kind": "desktop",
-      "viewport": { "width": 1440, "height": 1156 },
-      "sourceArtifact": "services/heronwatch/output/playwright/heronwatch-themed-desktop-final.png",
-      "sourceSha256": "48f2839cc26d29f4eeaf2c98c28bdcedc2eb19790e09677024adbabd8d883c76",
-      "asset": "/assets/product/watch/heron-watch-desktop.webp"
-    },
-    {
-      "kind": "mobile",
-      "viewport": { "width": 390, "height": 1180 },
-      "sourceArtifact": "services/heronwatch/output/playwright/heronwatch-themed-mobile.png",
-      "sourceSha256": "0aefa4fced2ba72bac76b383675c78f049e20b15098670eeaf769df3babf2e1d",
-      "asset": "/assets/product/watch/heron-watch-mobile.webp"
-    }
+    { "kind": "desktop", "viewport": { "width": 1440, "height": 1156 }, "sourceArtifact": "services/heronwatch/web/output/playwright/heron-watch-save2q-desktop.png", "sourceSha256": "2d1841fc694097a4a209f12c35a9f5d6e2cc81d015bc30fe61220609a538f417", "asset": "/assets/product/watch/heron-watch-desktop.webp", "outputSha256": "4c831410468dd13b12f7930170eac95ee5fc32dacb3f03fde91c300e73137e5f" },
+    { "kind": "mobile", "viewport": { "width": 390, "height": 1180 }, "sourceArtifact": "services/heronwatch/web/output/playwright/heron-watch-save2q-mobile.png", "sourceSha256": "a1de6cd9c15b4e4e9fa1a86f57973c35a0e40baecf1a0f7e133ce32a630955dd", "asset": "/assets/product/watch/heron-watch-mobile.webp", "outputSha256": "58fb721c9b2fd96ac67bcb3317e2f2fff47191333289fc94719b55fb3377811b" }
   ]
 }

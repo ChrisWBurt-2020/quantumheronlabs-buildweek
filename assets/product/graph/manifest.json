@@ -1,29 +1,16 @@
 {
   "surface": "graph",
-  "sourceRepository": "services/graph-web",
-  "sourceGitRoot": "exocortex-hub",
-  "sourceCommit": "c93964ab741462a38f33daf085b4c133745b6f40",
-  "sourceReleaseCommit": "0238543b",
-  "sourceTreeState": "dirty",
-  "sourceDiffSha256": "3d104ac19217949b62a3e3e63aee1b3a4caf19aeaf003ceaec5bf522276ff7ee",
-  "sourceRoute": "/",
-  "fixtureState": "built-in public mockGraphData; no account records",
-  "captureDate": "2026-07-20",
-  "captureCommand": "playwright-cli -s=heron-graph-capture open http://127.0.0.1:5183/ && playwright-cli -s=heron-graph-capture screenshot",
+  "dataset": "trustworthy-agent-design-v1",
+  "sourceRepository": "/home/debian/testproj/services/graph-web",
+  "sourceGitRoot": "/home/debian/testproj",
+  "sourceCommit": "896e6d26cb9f52980232df12c8ee65375b742bb6",
+  "sourceTreeState": "clean (scoped repository; unrelated sewshore submodule excluded)",
+  "sourceRoute": "/?learning_domain=trustworthy-agent-design&trace=d06a5735-ba5a-4a4d-86eb-ad3da081ffc3",
+  "fixtureState": "deterministic read-only 16-node/22-edge public neighborhood; Trustworthy Agent Design selected with generated-image/source drawer; no account data",
+  "captureCommand": "playwright-cli -s=graph-capture select Trustworthy Agent Design node and capture desktop/mobile; cwebp -q 84",
+  "capturedAt": "2026-07-21T16:10:15Z",
   "captures": [
-    {
-      "kind": "desktop",
-      "viewport": { "width": 1440, "height": 1000 },
-      "sourceArtifact": "services/graph-web/.playwright-cli/page-2026-07-20T18-50-38-728Z.png",
-      "sourceSha256": "e31c45ac3979f16bda955b85fae87753aecd9bd7453a499630cf0fbe28ed1474",
-      "asset": "/assets/product/graph/heron-graph-desktop.webp"
-    },
-    {
-      "kind": "mobile",
-      "viewport": { "width": 390, "height": 844 },
-      "sourceArtifact": "services/graph-web/.playwright-cli/page-2026-07-20T18-50-54-959Z.png",
-      "sourceSha256": "1007280c1c3478121bd68c441f6760ba07a9d064e478904571f2cc648315b427",
-      "asset": "/assets/product/graph/heron-graph-mobile.webp"
-    }
+    { "kind": "desktop", "viewport": { "width": 1440, "height": 1000 }, "sourceArtifact": "services/graph-web/output/playwright/heron-graph-trustworthy-desktop.png", "sourceSha256": "50f3bb40eecb4e41f0595e2923a10ede8af40916dca9a12dbc6382c725793dde", "asset": "/assets/product/graph/heron-graph-desktop.webp", "outputSha256": "853b4c62173be5de956ec311bf1b81bdfbce029c2d5f9d583a9166ffc7c12748" },
+    { "kind": "mobile", "viewport": { "width": 390, "height": 844 }, "sourceArtifact": "services/graph-web/output/playwright/heron-graph-trustworthy-mobile.png", "sourceSha256": "162963f60834e9fc90f752160efa3b97e1736b821ce7b4748a409d5b22ca8a26", "asset": "/assets/product/graph/heron-graph-mobile.webp", "outputSha256": "d6241edb1d655cfc1f97f6b8094e5b0cded027212e7436d30c28b611b43595c3" }
   ]
 }

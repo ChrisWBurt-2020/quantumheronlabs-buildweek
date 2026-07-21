@@ -29,9 +29,8 @@ svg { display: block; }
 .site-header.is-compact { height: 68px; border-color: var(--line); }
 .site-header.is-hidden { transform: translateY(-105%); }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: var(--lime); }
-.brand-mark svg { width: 31px; height: 31px; fill: currentColor; }
-.brand-mark circle { fill: var(--lime); }
+.brand-mark { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 11px; color: var(--ink); background: var(--paper); overflow: hidden; }
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .brand > span:last-child { display: grid; line-height: 1; }
 .brand strong { font-family: var(--mono); font-size: 15px; letter-spacing: .16em; }
 .brand small { margin-top: 5px; color: #5e6661; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
@@ -411,8 +410,8 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
 @keyframes heronWing { 50% { transform: rotate(-5deg) translateY(-1px); } }
 @keyframes heronLook { 0%,72%,100% { transform: translate(0); } 78% { transform: translate(1px,-1px); } 84% { transform: translate(-1px,1px); } }
 
-.brand-mark { padding: 4px; overflow: visible; --mascot-ink: var(--ink); --mascot-wing: var(--paper); }
-.brand-mark .quantumHeron { width: 37px; height: 37px; }
+.brand-mark { padding: 0; --mascot-ink: var(--ink); --mascot-wing: var(--paper); }
+.brand-mark .quantumHeron { width: 100%; height: 100%; }
 .heronCompanion {
   --mascot-ink: var(--paper);
   --mascot-wing: var(--lime);
@@ -475,16 +474,12 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
   place-items: center;
   color: var(--ink);
   background: var(--paper);
-  border: 1px solid currentColor;
-  border-radius: 50%;
+  border: 1px solid var(--ink);
+  border-radius: 11px;
+  overflow: hidden;
   box-shadow: 0 0 0 4px rgba(18,24,22,.05);
 }
-.surface-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.surface-icon-feed { color: #9f321b; background: #ff9c7d; }
-.surface-icon-graph { color: #173b4b; background: var(--sky); }
-.surface-icon-learn { background: var(--lime); }
-.surface-icon-client { color: #163b4a; background: var(--sky); }
-.surface-icon-watch { color: #20301a; background: #e8ff99; }
+.surface-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .loop-node.active .surface-icon { box-shadow: 4px 4px 0 var(--ink); transform: translate(-2px,-2px); }
 
 .product-capture {
@@ -550,7 +545,7 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
   .hero h1 { font-size: clamp(52px,15vw,78px); }
   .loop-node { grid-template-columns: 26px 38px minmax(0,1fr); gap: 10px; }
   .surface-icon { width: 36px; height: 36px; }
-  .surface-icon svg { width: 22px; height: 22px; }
+  .surface-icon img { width: 100%; height: 100%; }
   .product-capture figcaption { grid-template-columns: 1fr; gap: 8px; }
 }
 

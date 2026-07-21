@@ -1,10 +1,13 @@
 {
   "name": "@heron/companion-sdk",
-  "version": "2.0.0",
+  "version": "3.0.7",
   "files": {
-    "heron-companion.esm.js": "sha256-WqK3iKyyNAHABnpuQ86Z2yPDuZixmQ3oSFRu4AelWq4=",
-    "heron-companion.iife.js": "sha256-eYUMUMOqc8I7DJrt+5EMkd43PewEqLYLvn3lBJFslw8=",
-    "heron-companion.css": "sha256-krRrp883ILNR4HNl74xYqT9bYyZFOsXxJ1wNXLVsdDw=",
-    "quantum-heron.svg": "sha256-SWzURd7VNCHxO4KEdvpRyQM1KZkOb6a8VjFXTr4MDDA="
+    "heron-companion.esm.js": "sha256-bqlnToA4+oUtJtmBi4T9JE+LEDlPd89BY1+BMNzbh2A=",
+    "heron-companion.iife.js": "sha256-f8EWF88uvm6QtqiuuDrKR8NufGgZvh/AUqwR3bH7zM8=",
+    "heron-companion.css": "sha256-OZ8qILJuqAk8ueSrLJngxRvH5BeebYTnvG9+jFTQ0/Y=",
+    "heron-companion.png": "sha256-PecZa5aRvZUB0DEOR7SPQUJpX2//1dUohto//AQgkoM=",
+    "heron-companion-v3.webp": "sha256-dQKjoQblF3/+xws8Gyljgqne3tp0UbxLr+jZfFZx7DU=",
+    "heron-companion-v3.png": "sha256-yjTpMvDoRxdCk+gSf79LUxzepCRMYy65ZOrov/k+aJI=",
+    "heron-companion-v3.json": "sha256-cKoQGfBQ+uBlSOLhYa8tHo2POG8LirFVX6mwx0Go0Qk="
   }
 }

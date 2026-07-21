@@ -1,0 +1,87 @@
+{
+  "version": 3,
+  "atlas": {
+    "columns": 8,
+    "rows": 9,
+    "frameWidth": 192,
+    "frameHeight": 208,
+    "width": 1536,
+    "height": 1872
+  },
+  "fallbackFrame": {
+    "row": 0,
+    "column": 2
+  },
+  "registration": {
+    "anchor": "bottom-center",
+    "baseline": 204,
+    "wholePoseTranslation": false,
+    "wholePoseRotation": false
+  },
+  "states": {
+    "idle": {
+      "row": 0,
+      "frames": 8,
+      "fps": 3,
+      "loop": true
+    },
+    "listening": {
+      "row": 1,
+      "frames": 8,
+      "fps": 4,
+      "loop": true
+    },
+    "thinking": {
+      "row": 2,
+      "frames": 8,
+      "fps": 4,
+      "loop": true
+    },
+    "learning": {
+      "row": 3,
+      "frames": 8,
+      "fps": 4,
+      "loop": true
+    },
+    "building": {
+      "row": 4,
+      "frames": 8,
+      "fps": 4,
+      "loop": true
+    },
+    "needs_input": {
+      "row": 5,
+      "frames": 8,
+      "fps": 3,
+      "loop": true
+    },
+    "ready": {
+      "row": 6,
+      "frames": 8,
+      "fps": 4,
+      "loop": true
+    },
+    "blocked": {
+      "row": 7,
+      "frames": 8,
+      "fps": 3,
+      "loop": true
+    },
+    "resting": {
+      "row": 8,
+      "frames": 8,
+      "fps": 3,
+      "loop": true
+    }
+  },
+  "files": {
+    "webp": {
+      "name": "heron-companion-v3.webp",
+      "integrity": "sha256-7502a3a106e5177ffec70b3c1b296382a9dededa7451bc4bafe8d97c5671ec35"
+    },
+    "png": {
+      "name": "heron-companion-v3.png",
+      "integrity": "sha256-ca34e932f0e847174293e8127fbf4b531cdea4244c632eb964eae8bff93e6892"
+    }
+  }
+}

@@ -553,3 +553,21 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
   .path-context { grid-template-columns: 1fr; }
   .product-capture img { aspect-ratio: 390 / 844; max-height: 720px; object-fit: cover; }
 }
+
+/* Hire-me section (added 2026-09-26) */
+.hire { border-top: 1px solid var(--ink); }
+.hire .kicker { color: var(--ink-soft); margin-bottom: 18px; }
+.hire h2 { margin: 0; font-family: var(--serif); font-size: clamp(50px, 5vw, 78px); line-height: .95; font-weight: 400; letter-spacing: -.04em; }
+.hire h2 em { color: var(--orange); font-weight: 400; }
+.hire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; margin-top: 56px; }
+.hire-lede { max-width: 520px; margin-top: 28px; color: var(--ink-soft); font-size: clamp(16px, 1.3vw, 20px); line-height: 1.55; }
+.hire-services { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); align-self: start; }
+.hire-services li { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.hire-services b { font-size: 15px; }
+.hire-services p { margin: 6px 0 0; color: #5d6661; font-size: 13px; line-height: 1.6; }
+.hire-proof { margin-top: 38px; font-size: 13px; line-height: 2; color: #5d6661; }
+.hire-proof a { font-weight: 800; border-bottom: 1px solid var(--lime); }
+.hire-pending { color: #9aa39e; }
+.hire-cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
+.hire-note { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: #68716c; }
+@media (max-width: 900px) { .hire-grid { grid-template-columns: 1fr; } }

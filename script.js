@@ -1,15 +1,6 @@
 const menuButton = document.querySelector('[data-menu-button]');
 const nav = document.querySelector('[data-nav]');
 const header = document.querySelector('[data-header]');
-const requestedAudience = new URLSearchParams(window.location.search).get('audience');
-const audience = requestedAudience === 'judge' ? 'judge' : 'public';
-
-document.body.dataset.audience = audience;
-document.querySelectorAll('[data-audience-link]').forEach((link) => {
-  const active = link.dataset.audienceLink === audience;
-  if (active) link.setAttribute('aria-current', 'page');
-  else link.removeAttribute('aria-current');
-});
 
 menuButton?.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') === 'true';

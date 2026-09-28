@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#f4f2e9" />
     <title>Quantum Heron Labs — AI agent harness contracting</title>
     <meta name="description" content="Chris Burt, Quantum Heron Labs: the scaffolding that makes AI agents reliable in production. 1099/C2C contracting — harness builds, MCP integration, eval & observability, and a fixed-price $5,000 Field Service Workflow Pilot." />
-    <meta property="og:title" content="Quantum Heron Labs — Have an agent that needs a harness?" />
+    <meta property="og:title" content="Quantum Heron Labs — AI agents fail in production. I build the layer that keeps them honest." />
     <meta property="og:description" content="Scoped, demo-driven 1099/C2C engagements: fixed outcomes, weeks not quarters. Including a fixed-price $5,000 workflow pilot." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://quantumheronlabs.com" />
@@ -28,7 +28,72 @@
       .hero-proofline .hpl-links a { color: var(--ink); font-weight: 700; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
       .hero-proofline .hpl-links i { font-style: normal; color: #68716c; }
       .hero-proofline .hpl-note { color: #68716c; font-size: 13px; }
+      /* Landing-only: pilot boundaries strip. */
+      .pilot-bounds { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 26px; }
+      .pilot-bounds > ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+      .pilot-bounds li > b { display: block; font-size: 14px; letter-spacing: 0.04em; margin-bottom: 8px; }
+      .pilot-bounds li > p { margin: 0; font-size: 14px; line-height: 1.55; color: #68716c; }
+      /* Landing-only: illustrative pilot example. */
+      .pilot-example { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 26px; }
+      .pilot-example h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 14px 0 12px; }
+      .pilot-example .example-before { max-width: 70ch; }
+      .example-flow { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
+      .example-flow li { padding: 18px 20px; border-left: 1px solid var(--line); }
+      .example-flow li:first-child { border-left: 0; }
+      .example-flow li > b { display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+      .example-flow li > span { font-size: 14px; line-height: 1.55; }
+      /* Landing-only: email hint under the pilot CTA. */
+      .email-hint { margin-top: 14px; font-size: 13px; line-height: 1.6; color: #68716c; max-width: 62ch; }
+      @media (max-width: 900px) {
+        .pilot-bounds > ul { grid-template-columns: repeat(2, 1fr); }
+        .example-flow { grid-template-columns: repeat(2, 1fr); }
+        .example-flow li:nth-child(3) { border-left: 0; }
+        .example-flow li:nth-child(n+3) { border-top: 1px solid var(--line); }
+      }
+      @media (max-width: 560px) {
+        .pilot-bounds > ul { grid-template-columns: 1fr; gap: 18px; }
+        .example-flow { grid-template-columns: 1fr; }
+        .example-flow li { border-left: 0; border-top: 1px solid var(--line); }
+        .example-flow li:first-child { border-top: 0; }
+      }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://quantumheronlabs.com/#organization",
+          "name": "Quantum Heron Labs",
+          "url": "https://quantumheronlabs.com/",
+          "email": "chris@quantumheronlabs.com",
+          "founder": { "@id": "https://quantumheronlabs.com/#chris" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://quantumheronlabs.com/#chris",
+          "name": "Chris Burt",
+          "url": "https://quantumheronlabs.com/",
+          "jobTitle": "AI agent harness contractor",
+          "worksFor": { "@id": "https://quantumheronlabs.com/#organization" },
+          "sameAs": ["https://github.com/ChrisWBurt-2020"]
+        },
+        {
+          "@type": "Service",
+          "name": "Field Service Workflow Pilot",
+          "serviceType": "AI agent workflow pilot",
+          "provider": { "@id": "https://quantumheronlabs.com/#organization" },
+          "description": "A fixed-price, 2–4 week private prototype built around one of your real workflows: mobile capture, grounded answers from your manuals and SOPs, durable tasks and follow-ups, and evidence of everything.",
+          "offers": {
+            "@type": "Offer",
+            "price": "5000",
+            "priceCurrency": "USD",
+            "description": "Fixed price. If it runs long, that's the contractor's risk — the price doesn't move."
+          }
+        }
+      ]
+    }
+    </script>
     <script src="/heron-mascot.js?v=20260720d" defer></script>
     <script src="/heron-particles.js?v=20260720a" defer></script>
     <script src="/script.js?v=20260720b" defer></script>
@@ -57,8 +122,8 @@
         <div class="hero-grid"></div>
         <div class="hero-copy reveal">
           <p class="kicker">QUANTUM HERON LABS · 1099/C2C</p>
-          <h1>Have an agent<br />that needs <em>a harness?</em></h1>
-          <p class="hero-lede">I&rsquo;m Chris Burt. I build the scaffolding that makes AI agents reliable in production &mdash; task orchestration, tool and MCP integration, durable state, spend governance, and observability. I contract through my own LLC on scoped, demo-driven engagements: fixed outcomes, weeks not quarters.</p>
+          <h1>AI agents fail<br />in <em>production.</em><br />I build the layer<br />that keeps them honest.</h1>
+          <p class="hero-lede">I&rsquo;m Chris Burt. I build the agent harness that makes AI agents reliable in production &mdash; task orchestration, tool and MCP integration, durable state, spend governance, and observability. I contract through my own LLC on scoped, demo-driven engagements: fixed outcomes, weeks not quarters.</p>
           <div class="hero-actions">
             <a class="button button-dark" href="#pilot">See the $5,000 pilot <span>↓</span></a>
             <a class="button button-ghost" href="mailto:chris@quantumheronlabs.com">Start a conversation <span>↗</span></a>
@@ -137,6 +202,7 @@
               <a class="button button-lime" href="mailto:chris@quantumheronlabs.com?subject=Field%20Service%20Workflow%20Pilot">Start a conversation <span>↗</span></a>
               <span class="hire-note">1099/C2C &middot; REMOTE-FIRST &middot; YOU OWN EVERYTHING BUILT</span>
             </div>
+            <p class="email-hint">In your email: what workflow is failing, who uses it, what systems or documents are involved, and what a successful pilot would demonstrate.</p>
           </div>
           <ul class="hire-services reveal">
             <li><b>What&rsquo;s included</b><p>A private working prototype built around one of your real workflows &mdash; your documents, your process, not a canned demo. Mobile capture: a technician speaks or photographs and it becomes structured job evidence. Grounded answers from your manuals and SOPs, with the source shown. Durable tasks and follow-ups that don&rsquo;t fall through. And evidence of everything: what was captured, what the system did, what needed a human decision, what failed.</p></li>
@@ -144,6 +210,26 @@
             <li><b>What you get</b><p>A prototype your team actually uses. A written evidence report: what worked, what didn&rsquo;t, what productionizing would take. Everything built during the pilot &mdash; including the report &mdash; is yours.</p></li>
             <li><b>How it runs</b><p>Week 1: your workflow mapped, documents loaded. Weeks 2&ndash;3: the prototype in your technician&rsquo;s hands. Week 4: evidence report and handoff. One working session per week, remote-first.</p></li>
           </ul>
+        </div>
+        <div class="pilot-bounds reveal">
+          <p class="kicker">PILOT BOUNDARIES · WHAT THE FIXED PRICE COVERS</p>
+          <ul>
+            <li><b>Best for</b><p>Field service, operations, support, documentation, and internal workflows.</p></li>
+            <li><b>Includes</b><p>One workflow, one pilot team, one deployment path, one evidence report.</p></li>
+            <li><b>Excludes</b><p>Full ERP replacement, org-wide rollout, indefinite integrations.</p></li>
+            <li><b>Requires</b><p>One process owner, representative documents, one test user.</p></li>
+          </ul>
+        </div>
+        <div class="pilot-example reveal">
+          <p class="kicker">ILLUSTRATIVE EXAMPLE · NOT A CLIENT RESULT</p>
+          <h3>What a pilot pass looks like.</h3>
+          <p class="example-before"><b>Before:</b> a technician&rsquo;s notes live in texts, paper, and memory. Follow-ups fall through. Nothing is provable.</p>
+          <ol class="example-flow">
+            <li><b>Capture</b><span>Speech and photos become structured job evidence.</span></li>
+            <li><b>Ground</b><span>Answers come from your manuals and SOPs, source shown.</span></li>
+            <li><b>Decide</b><span>Consequential calls wait for a human.</span></li>
+            <li><b>Receipt</b><span>What was captured, done, and failed &mdash; recorded.</span></li>
+          </ol>
         </div>
       </section>
 
@@ -153,7 +239,7 @@
           <div class="reveal">
             <p class="kicker">HERON · FIVE CONNECTED SURFACES</p>
             <h2>Want the <em>backstory?</em></h2>
-            <p class="hire-lede">The five-surface Heron platform &mdash; Watch, Feed, Graph, Learn, Client &mdash; is the evidence-first system this work is built on. It lives on its own page now, along with the OpenAI Build Week story.</p>
+            <p class="hire-lede">Heron is the proof system behind the work: a five-surface platform &mdash; Watch, Feed, Graph, Learn, Client &mdash; built evidence-first. It lives on its own page now, along with the OpenAI Build Week story.</p>
             <div class="hire-cta">
               <a class="button button-dark" href="/platform/">Explore the platform <span>→</span></a>
             </div>
@@ -163,7 +249,7 @@
     </main>
 
     <footer>
-      <div class="footer-mark">QHL / 2026 · BUILD 2026.09.28.1</div>
+      <div class="footer-mark">QHL / 2026 · BUILD 2026.09.28.2</div>
       <div><b>Quantum Heron Labs</b><p>AI agent harness contracting — 1099/C2C.</p></div>
       <nav aria-label="Footer"><a href="mailto:chris@quantumheronlabs.com">Work with me</a><a href="/platform/">Platform</a><a href="https://watch.quantumheronlabs.com">Watch ↗</a><a href="https://heronfeed.quantumheronlabs.com">Feed ↗</a><a href="https://graph.quantumheronlabs.com">Graph ↗</a><a href="https://learn.quantumheronlabs.com">Learn ↗</a><a href="https://heronclient.quantumheronlabs.com">Client ↗</a><a href="#top">Top ↑</a></nav>
     </footer>

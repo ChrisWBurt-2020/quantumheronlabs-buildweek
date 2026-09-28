@@ -3,6 +3,7 @@ FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html styles.css script.js heron-mascot.js heron-particles.js manifest.webmanifest favicon.png robots.txt sitemap.xml ed707595a3714105a93153b1cc2f12a7.txt /usr/share/nginx/html/
 COPY assets/ /usr/share/nginx/html/assets/
+COPY platform/ /usr/share/nginx/html/platform/
 RUN find /usr/share/nginx/html -type d -exec chmod 755 {} + \
     && find /usr/share/nginx/html -type f -exec chmod 644 {} +
 

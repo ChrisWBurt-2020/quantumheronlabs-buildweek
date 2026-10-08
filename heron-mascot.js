@@ -5,7 +5,7 @@
   function render(host) {
     const image = document.createElement("img");
     image.className = "quantumHeron quantumHeron--system";
-    image.src = "/assets/brand/quantum-heron.png?v=20260720d";
+    image.src = "assets/brand/quantum-heron.png?v=20260720d";
     image.alt = host.dataset.heronLabel || "Quantum Heron";
     image.decoding = "async";
     host.replaceChildren(image);

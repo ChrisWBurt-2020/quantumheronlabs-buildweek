@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-10-21T23:15:47Z",
+  "overall": "VERIFIED",
+  "tally": {
+    "VERIFIED": 5,
+    "FALSE": 0,
+    "UNPROVEN": 0
+  },
+  "results": [
+    {
+      "kind": "repo",
+      "subject": "ChrisWBurt-2020/openpi",
+      "claim": "repo ChrisWBurt-2020/openpi exists and is public",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/openpi|OpenPi)  \u2014 Pi-agent workbench: sandboxed renderer, validated IPC, 787 TypeScript tests  \u2197",
+      "verdict": "VERIFIED",
+      "evidence": "GitHub API 200, private=false, pushed_at=2026-09-28T04:05:43Z"
+    },
+    {
+      "kind": "lang_count",
+      "subject": "ChrisWBurt-2020/openpi",
+      "claim": "787 TypeScript tests (ChrisWBurt-2020/openpi)",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/openpi|OpenPi)  \u2014 Pi-agent workbench: sandboxed renderer, validated IPC, 787 TypeScript tests  \u2197",
+      "verdict": "VERIFIED",
+      "evidence": "recount from fresh clone of public snapshot: 787 TypeScript tests (claimed 787); all counts {'Rust': 0, 'Python': 0, 'JavaScript': 0, 'TypeScript': 787, 'total': 787}"
+    },
+    {
+      "kind": "repo",
+      "subject": "ChrisWBurt-2020/task-fabric-svn",
+      "claim": "repo ChrisWBurt-2020/task-fabric-svn exists and is public",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/task-fabric-svn|Task Fabric)  \u2014 durable task orchestration with ledger-grade auditability: 372 tests (217 Rust + 155 Python tests)",
+      "verdict": "VERIFIED",
+      "evidence": "GitHub API 200, private=false, pushed_at=2026-10-21T21:25:36Z"
+    },
+    {
+      "kind": "lang_count",
+      "subject": "ChrisWBurt-2020/task-fabric-svn",
+      "claim": "217 Rust tests (ChrisWBurt-2020/task-fabric-svn)",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/task-fabric-svn|Task Fabric)  \u2014 durable task orchestration with ledger-grade auditability: 372 tests (217 Rust + 155 Python tests)",
+      "verdict": "VERIFIED",
+      "evidence": "recount from fresh clone of public snapshot: 217 Rust tests (claimed 217); all counts {'Rust': 217, 'Python': 155, 'JavaScript': 0, 'TypeScript': 0, 'total': 372}"
+    },
+    {
+      "kind": "lang_count",
+      "subject": "ChrisWBurt-2020/task-fabric-svn",
+      "claim": "155 Python tests (ChrisWBurt-2020/task-fabric-svn)",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/task-fabric-svn|Task Fabric)  \u2014 durable task orchestration with ledger-grade auditability: 372 tests (217 Rust + 155 Python tests)",
+      "verdict": "VERIFIED",
+      "evidence": "recount from fresh clone of public snapshot: 155 Python tests (claimed 155); all counts {'Rust': 217, 'Python': 155, 'JavaScript': 0, 'TypeScript': 0, 'total': 372}"
+    }
+  ]
+}

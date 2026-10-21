@@ -108,6 +108,11 @@ _LANGS = r"(?:Rust|Python|JavaScript|TypeScript|Go|Kotlin|Swift)"
 LANGCHAIN_RE = re.compile(
     r"((?:\d[\d,]*\s+" + _LANGS + r"(?:\s*(?:\+|,|and)\s*)?)+)\s*tests?\b", re.I)
 LANGPAIR_RE = re.compile(r"(\d[\d,]*)\s+(" + _LANGS + r")", re.I)
+
+def _canon_lang(name):
+    return {"Typescript": "TypeScript", "Javascript": "JavaScript"}.get(
+        name.capitalize(), name.capitalize())
+
 GH_URL_RE = re.compile(r"github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+?)(?:\.git)?(?:/|$|\"|\))")
 
 
@@ -146,7 +151,7 @@ def extract_claims(blocks, source, default_owner):
             if subj:
                 for n, lang in LANGPAIR_RE.findall(chain):
                     add("lang_count", subj,
-                        f"{n} {lang.capitalize()} tests ({subj})", block)
+                        f"{n} {_canon_lang(lang)} tests ({subj})", block)
         pm = PHASE_RE.search(block)
         if pm and subj:
             add("phase", subj, f"Phase {pm.group(1)} shipped ({subj})", block)
@@ -296,7 +301,7 @@ def probe_claim(claim, probe):
         counts = recount_tests(dest)
         if kind == "lang_count":
             m = re.match(r"(\d[\d,]*)\s+(\w+)\s+tests", claim["claim"])
-            want_n, want_lang = int(m.group(1).replace(",", "")), m.group(2).capitalize()
+            want_n, want_lang = int(m.group(1).replace(",", "")), _canon_lang(m.group(2))
             got = counts.get(want_lang)
             if got is None:
                 return UNPROVEN, f"no counter for language {want_lang}"

@@ -44,13 +44,31 @@ OUTPUT
 
 USAGE
   site-claims-verify.py [--page URL_OR_PATH] [--md FILE ...] [--owner OWNER]
-                        [--out-dir DIR] [--no-clone]
+                        [--out-dir DIR] [--no-clone] [--record-to INDEX]
+
+VERIFIED-STATE RECORDING (opt-in, --record-to)
+  With --record-to INDEX, a completed run also appends ONE record for the
+  page's surface to the verified-state index the operator names, in the
+  writer contract of sovereign-builds 06-forensic-ritual/
+  verified_state_index.py (record shape {record_id, surface, state,
+  result, probed_at, source, note}; record_id = "vsr-" + sha256 of the
+  canonical record body, first 12 hex chars; JSON Lines, append-only).
+  This verifier implements that contract itself — it never reaches
+  across repos at runtime. The overall verdict maps to the record as:
+  VERIFIED -> state "live", result "verified"; FALSE -> state "claims
+  contradicted", result "refuted"; UNPROVEN -> state "claims unproven",
+  result "unproven" (a non-verified newest record carries no state
+  forward in the index's check, by design). Recording is idempotent
+  (an identical probe is not appended twice) and fail-closed (a
+  malformed existing index line refuses the append, exit 2). Without
+  --record-to nothing is recorded. Verdict logic is unchanged.
 
 Stdlib only. Paths resolve from this file's location, never from cwd.
 """
 
 import argparse
 import datetime as _dt
+import hashlib
 import json
 import os
 import re
@@ -59,6 +77,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.error
+import urllib.parse
 import urllib.request
 
 DEFAULT_PAGE = "https://quantumheronlabs.com/"
@@ -320,6 +339,88 @@ def probe_claim(claim, probe):
     return UNPROVEN, f"no probe implemented for kind {kind}"
 
 
+# ------------------------------------------------- verified-state recording
+# Writer leg of the verified_state_index contract (see module docstring).
+# Self-contained: the record shape and id derivation mirror the index
+# tool's `record` subcommand exactly; no cross-repo import or path.
+
+RECORD_FIELDS = ("surface", "state", "result", "probed_at", "source", "note")
+RECORD_SOURCE = "site-claims-verify"
+_OVERALL_TO_RECORD = {
+    VERIFIED: ("live", "verified"),
+    FALSE: ("claims contradicted", "refuted"),
+    UNPROVEN: ("claims unproven", "unproven"),
+}
+
+
+class RecordProblem(Exception):
+    """The target index could not be trusted — fail closed, no append."""
+
+
+def _record_id_for(body):
+    canonical = json.dumps(body, sort_keys=True, separators=(",", ":"))
+    return "vsr-" + hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
+
+
+def _existing_record_ids(path):
+    """Validate an existing index exactly as the index reader does:
+    every non-blank line a JSON object with all fields present and a
+    record_id matching its content. Returns the set of record_ids."""
+    ids = set()
+    if not os.path.exists(path):
+        return ids
+    with open(path, encoding="utf-8") as fh:
+        lines = fh.read().splitlines()
+    for lineno, raw in enumerate(lines, start=1):
+        line = raw.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise RecordProblem(f"index line {lineno}: invalid JSON ({exc})")
+        if not isinstance(obj, dict):
+            raise RecordProblem(f"index line {lineno}: not a JSON object")
+        missing = [f for f in ("record_id",) + RECORD_FIELDS if f not in obj]
+        if missing:
+            raise RecordProblem(
+                f"index line {lineno}: missing fields {missing} — "
+                "record cannot be trusted, refusing to append")
+        body = {f: obj[f] for f in RECORD_FIELDS}
+        if obj["record_id"] != _record_id_for(body):
+            raise RecordProblem(
+                f"index line {lineno}: record_id {obj['record_id']} does "
+                "not match its content — tampered or hand-edited record, "
+                "refusing to append")
+        ids.add(obj["record_id"])
+    return ids
+
+
+def surface_for_page(page):
+    """The surface a run claims about: the page URL's host; a local
+    page is the site's own source, so it names the default site host."""
+    host = urllib.parse.urlparse(page).netloc
+    return host or urllib.parse.urlparse(DEFAULT_PAGE).netloc
+
+
+def append_verified_state_record(index_path, surface, overall, probed_at,
+                                 note):
+    """Append this run's record to the index. Returns (record, appended):
+    appended is False when the identical probe is already recorded."""
+    state, result = _OVERALL_TO_RECORD[overall]
+    body = {"surface": surface, "state": state, "result": result,
+            "probed_at": probed_at, "source": RECORD_SOURCE, "note": note}
+    record = {"record_id": _record_id_for(body)}
+    record.update(body)
+    if record["record_id"] in _existing_record_ids(index_path):
+        return record, False
+    parent = os.path.dirname(os.path.abspath(index_path))
+    os.makedirs(parent, exist_ok=True)
+    with open(index_path, "a", encoding="utf-8") as fh:
+        fh.write(json.dumps(record) + "\n")
+    return record, True
+
+
 # ---------------------------------------------------------------------- main
 
 def main(argv=None):
@@ -334,6 +435,9 @@ def main(argv=None):
     ap.add_argument("--out-dir", default=here)
     ap.add_argument("--no-clone", action="store_true",
                     help="skip clone-based recounts (counts become UNPROVEN)")
+    ap.add_argument("--record-to", metavar="INDEX", default=None,
+                    help="append a verified-state record for this run to "
+                         "INDEX (JSON Lines, verified_state_index contract)")
     args = ap.parse_args(argv)
 
     sources = []  # (name, raw, is_html)
@@ -385,6 +489,26 @@ def main(argv=None):
 
     print("\n".join(lines))
     print(f"\nReceipt: {base}.md / .json")
+
+    if args.record_to:
+        note = (f"site-claims-verify overall {overall}: "
+                f"VERIFIED {tally[VERIFIED]} · FALSE {tally[FALSE]} · "
+                f"UNPROVEN {tally[UNPROVEN]} over {len(results)} claims "
+                f"from {args.page}")
+        try:
+            record, appended = append_verified_state_record(
+                args.record_to, surface_for_page(args.page), overall,
+                ts, note)
+        except RecordProblem as exc:
+            print(f"FATAL: verified-state recording refused: {exc}",
+                  file=sys.stderr)
+            return 2
+        if appended:
+            print(f"Verified-state record: {record['record_id']} "
+                  f"appended to {args.record_to}")
+        else:
+            print(f"Verified-state record: {record['record_id']} "
+                  f"already recorded in {args.record_to} — append skipped")
     return 1 if overall == FALSE else (2 if overall == UNPROVEN else 0)
 
 

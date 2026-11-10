@@ -20,8 +20,8 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const errors = [];
-const CACHE_BUST = "20261110a";
-const BUILD_STAMP = "2026.11.10.1";
+const CACHE_BUST = "20261110c";
+const BUILD_STAMP = "2026.11.10.2";
 
 async function load(rel) {
   try {
@@ -114,8 +114,8 @@ for (const demo of ["learn", "graph"]) {
   // demo CSS/JS must live in external files or the demos render inert.
   // (Regression guard for the 2026-11-10 live defect: Graph drew 0 nodes
   // and the Learn quiz never ran because both shipped inline.)
-  mustInclude(`platform/${demo}`, html, 'href="styles.css"', "external demo stylesheet");
-  mustInclude(`platform/${demo}`, html, 'src="demo.js"', "external demo script");
+  mustInclude(`platform/${demo}`, html, 'href="styles.css?v=' + CACHE_BUST + '"', "external demo stylesheet");
+  mustInclude(`platform/${demo}`, html, 'src="demo.js?v=' + CACHE_BUST + '"', "external demo script");
   mustExclude(`platform/${demo}`, html, "<style", "inline style block (blocked by the live CSP)");
   mustExclude(`platform/${demo}`, html, ' style="', "inline style attribute (blocked by the live CSP)");
   mustExclude(`platform/${demo}`, html, "<script>", "inline script block (blocked by the live CSP)");

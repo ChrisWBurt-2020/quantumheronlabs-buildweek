@@ -1,0 +1,8 @@
+/* Platform-only: loop nodes carry no icon column — the unprovenanced
+   July surface-icon set was removed in the 2026-11-10 modernization,
+   and the shared stylesheet's loop-node grid expects that column. */
+.stage-content .loop-node { grid-template-columns: 34px minmax(0, 1fr) auto; }
+@media (max-width: 640px) {
+  .stage-content .loop-node { grid-template-columns: 26px minmax(0, 1fr); }
+  .stage-content .loop-node .node-tag { display: none; }
+}

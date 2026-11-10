@@ -87,6 +87,15 @@ curl -fsS http://127.0.0.1:8465/health
 
 The container is read-only, drops all capabilities except the minimum Nginx runtime set, and binds only to localhost. Host Nginx terminates TLS and proxies `quantumheronlabs.com` to port `8465`.
 
+## Design detector
+
+CI runs the pinned Impeccable detector (`impeccable@4.8.2`, engine
+0.1.21 as-served) over `index.html` + `styles.css` as a non-blocking
+check — findings land in the job summary and the `impeccable-report`
+artifact, waivers-with-reason in `.impeccable/config.json`. Unslop
+remains the design authority; the detector is its mechanical
+complement. Full notes: [`docs/impeccable-detector.md`](./docs/impeccable-detector.md).
+
 ## Files
 
 - `index.html` — semantic landing-page structure and submission narrative

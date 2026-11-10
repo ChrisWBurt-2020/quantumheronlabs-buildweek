@@ -3,3 +3,7 @@
 .playwright-cli/
 output/
 
+# impeccable detector working files (caches, live state, screenshots);
+# the shared config is tracked on purpose — waivers live there, with reasons.
+.impeccable/*
+!.impeccable/config.json

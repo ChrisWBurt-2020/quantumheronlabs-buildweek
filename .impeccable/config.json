@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-10T01:13:47.194Z",
+        "reason": "Deliberate QHL brand surface: warm paper #f4f2e9 (--paper token in styles.css). Unslop world-tinted-ramp rule endorses a neutral ramp tinted toward the product world; this is the brand, not a reflex default."
+      }
+    ]
+  }
+}

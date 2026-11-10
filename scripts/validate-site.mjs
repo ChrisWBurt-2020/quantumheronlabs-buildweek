@@ -123,6 +123,15 @@ for (const demo of ["learn", "graph"]) {
   mustExclude(`platform/${demo}/demo.js`, demoJs, "fetch(", "backend calls from a static dummy demo");
 }
 
+// ------------------------------------------------------------ privacy
+// The last inline block on the site (removed 2026-11-10): the privacy
+// page's .legal typography was CSP-dead inline, same disease as root
+// and platform. Guard it like the others.
+const privacy = await load("privacy/index.html");
+mustInclude("privacy", privacy, 'href="privacy.css?v=' + CACHE_BUST + '"', "external privacy stylesheet (the live CSP blocks inline styles)");
+mustExclude("privacy", privacy, "<style", "inline style block on privacy (blocked by the live CSP; use privacy.css)");
+mustExclude("privacy", privacy, ' style="', "inline style attribute on privacy (blocked by the live CSP)");
+
 // ------------------------------------------------------ required files
 for (const file of [
   "styles.css", "landing.css", "script.js", "heron-mascot.js", "heron-particles.js",
@@ -130,6 +139,7 @@ for (const file of [
   "assets/brand/quantum-heron.png", "assets/brand/heron-og-20260719.png",
   "platform/index.html", "platform/learn/index.html", "platform/graph/index.html",
   "platform/platform.css",
+  "privacy/index.html", "privacy/privacy.css",
   "platform/learn/styles.css", "platform/learn/demo.js",
   "platform/graph/styles.css", "platform/graph/demo.js",
 ]) {

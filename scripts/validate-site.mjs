@@ -60,6 +60,9 @@ for (const [needle, why] of [
   ['href="platform/"', "link to the platform showcase"],
   ["tailnet only", "honest private status for Learn on root"],
 ]) mustInclude("root", home, needle, why);
+mustInclude("root", home, 'href="landing.css?v=' + CACHE_BUST + '"', "external landing stylesheet (the live CSP blocks inline styles)");
+mustExclude("root", home, "<style", "inline style block on root (blocked by the live CSP; use landing.css)");
+mustExclude("root", home, ' style="', "inline style attribute on root (blocked by the live CSP)");
 mustExclude("root", home, "audience=judge", "retired judge funnel");
 mustExclude("root", home, 'id="judge"', "retired judge section");
 
@@ -122,7 +125,7 @@ for (const demo of ["learn", "graph"]) {
 
 // ------------------------------------------------------ required files
 for (const file of [
-  "styles.css", "script.js", "heron-mascot.js", "heron-particles.js",
+  "styles.css", "landing.css", "script.js", "heron-mascot.js", "heron-particles.js",
   "manifest.webmanifest", "robots.txt", "sitemap.xml", "favicon.png",
   "assets/brand/quantum-heron.png", "assets/brand/heron-og-20260719.png",
   "platform/index.html", "platform/learn/index.html", "platform/graph/index.html",

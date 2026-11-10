@@ -1,3 +1,7 @@
+> **HISTORICAL RECORD — July 2026.** This document narrates the OpenAI Build Week submission as it stood at the July 2026 deadline. It is preserved as provenance, not updated to the present. The judge guide URL, test-account items, pre-deadline checklists, and "risks still open" in it are retired. Current state: root `/` is the contracting page, `/platform/` is the showcase — see `README.md`.
+
+---
+
 # Build Week submission working brief
 
 > Use this as a planning document, then rewrite the final Devpost description in your own voice. OpenAI's event update explicitly recommends not submitting AI-written copy unchanged.

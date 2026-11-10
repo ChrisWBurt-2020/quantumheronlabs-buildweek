@@ -7,3 +7,7 @@ output/
 # the shared config is tracked on purpose — waivers live there, with reasons.
 .impeccable/*
 !.impeccable/config.json
+
+# site-claims verification receipts (generated per run; not source)
+scripts/site-claims-receipt-*.json
+scripts/site-claims-receipt-*.md

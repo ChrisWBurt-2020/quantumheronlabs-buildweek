@@ -1,3 +1,7 @@
+> **HISTORICAL RECORD — July 2026.** This delta describes changes made during OpenAI Build Week (July 13–21, 2026). It is preserved as provenance and is not a description of the current site. Current state: root `/` is the contracting page, `/platform/` is the showcase — see `README.md`.
+
+---
+
 # Heron Build Week Delta
 
 This document is the evidence map for the July 2026 submission. The current public positioning is “Your private AI exocortex”: turn what you encounter into what you understand, retain, connect, and do—with receipts. The stale enterprise-agent page observed by one crawler was an origin/cache artifact, not the current product direction.

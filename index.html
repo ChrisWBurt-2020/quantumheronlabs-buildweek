@@ -20,43 +20,7 @@
     <link rel="icon" href="favicon.png?v=20260720d" type="image/png" />
     <link rel="apple-touch-icon" href="assets/brand/icon-192.png?v=20260720d" />
     <link rel="stylesheet" href="styles.css?v=20261001a" />
-    <style>
-      /* Landing-only: hero proof line as one inline row (shared .hero-proof stacks its grid spans). */
-      .hero-proofline { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
-      .hero-proofline .hpl-label { font-weight: 800; font-size: 14px; color: var(--ink); margin-right: 4px; }
-      .hero-proofline .hpl-links { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
-      .hero-proofline .hpl-links a { color: var(--ink); font-weight: 700; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
-      .hero-proofline .hpl-links i { font-style: normal; color: #68716c; }
-      .hero-proofline .hpl-note { color: #68716c; font-size: 13px; }
-      /* Landing-only: pilot boundaries strip. */
-      .pilot-bounds { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 26px; }
-      .pilot-bounds > ul { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-      .pilot-bounds li > b { display: block; font-size: 14px; letter-spacing: 0.04em; margin-bottom: 8px; }
-      .pilot-bounds li > p { margin: 0; font-size: 14px; line-height: 1.55; color: #68716c; }
-      /* Landing-only: illustrative pilot example. */
-      .pilot-example { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 26px; }
-      .pilot-example h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 14px 0 12px; }
-      .pilot-example .example-before { max-width: 70ch; }
-      .example-flow { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
-      .example-flow li { padding: 18px 20px; border-left: 1px solid var(--line); }
-      .example-flow li:first-child { border-left: 0; }
-      .example-flow li > b { display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-      .example-flow li > span { font-size: 14px; line-height: 1.55; }
-      /* Landing-only: email hint under the pilot CTA. */
-      .email-hint { margin-top: 14px; font-size: 13px; line-height: 1.6; color: #68716c; max-width: 62ch; }
-      @media (max-width: 900px) {
-        .pilot-bounds > ul { grid-template-columns: repeat(2, 1fr); }
-        .example-flow { grid-template-columns: repeat(2, 1fr); }
-        .example-flow li:nth-child(3) { border-left: 0; }
-        .example-flow li:nth-child(n+3) { border-top: 1px solid var(--line); }
-      }
-      @media (max-width: 560px) {
-        .pilot-bounds > ul { grid-template-columns: 1fr; gap: 18px; }
-        .example-flow { grid-template-columns: 1fr; }
-        .example-flow li { border-left: 0; border-top: 1px solid var(--line); }
-        .example-flow li:first-child { border-top: 0; }
-      }
-    </style>
+    <link rel="stylesheet" href="landing.css?v=20261110a" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

@@ -1,16 +1,30 @@
 {
   "surface": "watch",
-  "dataset": "trustworthy-agent-design-v1",
-  "sourceRepository": "/home/debian/testproj/services/heronwatch",
-  "sourceGitRoot": "/home/debian/testproj",
-  "sourceCommit": "09bd66a6",
-  "sourceTreeState": "clean (scoped repository; unrelated sewshore submodule excluded)",
-  "sourceRoute": "/?learning_domain=trustworthy-agent-design&archetype=genealogist&archetype=cross_examiner",
-  "fixtureState": "anonymous deterministic QHL capsule; public Save2Q preview only; no model call or write",
-  "captureCommand": "playwright-cli -s=watch-capture select source-grounded insight; screenshot desktop/mobile; cwebp -q 84",
-  "capturedAt": "2026-07-21T15:50:33Z",
+  "dataset": "public-live-capture-2026-11-10",
+  "sourceRepository": "n/a \u2014 live public surface capture, not a repo fixture",
+  "sourceGitRoot": "n/a",
+  "sourceCommit": "n/a",
+  "sourceTreeState": "n/a",
+  "sourceRoute": "https://watch.quantumheronlabs.com/",
+  "fixtureState": "public demo, anonymous, no account, no owner data",
+  "captureCommand": "playwright screenshot --channel chrome --viewport-size <vp> --wait-for-timeout 7000 <route> out.png; PNG converted to WebP with Pillow (quality 82)",
+  "capturedAt": "2026-11-10T22:05:00Z",
   "captures": [
-    { "kind": "desktop", "viewport": { "width": 1440, "height": 1156 }, "sourceArtifact": "services/heronwatch/web/output/playwright/heron-watch-save2q-desktop.png", "sourceSha256": "2d1841fc694097a4a209f12c35a9f5d6e2cc81d015bc30fe61220609a538f417", "asset": "/assets/product/watch/heron-watch-desktop.webp", "outputSha256": "4c831410468dd13b12f7930170eac95ee5fc32dacb3f03fde91c300e73137e5f" },
-    { "kind": "mobile", "viewport": { "width": 390, "height": 1180 }, "sourceArtifact": "services/heronwatch/web/output/playwright/heron-watch-save2q-mobile.png", "sourceSha256": "a1de6cd9c15b4e4e9fa1a86f57973c35a0e40baecf1a0f7e133ce32a630955dd", "asset": "/assets/product/watch/heron-watch-mobile.webp", "outputSha256": "58fb721c9b2fd96ac67bcb3317e2f2fff47191333289fc94719b55fb3377811b" }
+    {
+      "kind": "desktop",
+      "viewport": "1440x1000",
+      "sourceArtifact": "playwright PNG capture of https://watch.quantumheronlabs.com/ (PNG not retained in repo)",
+      "sourceSha256": "fce90df78e04fb52cc600a3dc91114c600932057315bdee9a652c208a9d236d0",
+      "asset": "/assets/product/watch/heron-watch-desktop.webp",
+      "outputSha256": "847d2194d3f22d40a436ce047430e323b305bf56ad55218683172c99aa43953c"
+    },
+    {
+      "kind": "mobile",
+      "viewport": "390x844",
+      "sourceArtifact": "playwright PNG capture of https://watch.quantumheronlabs.com/ (PNG not retained in repo)",
+      "sourceSha256": "3a69a162cd22dd916ec6742652219fbc3e5780fdc3de6aa45593eec4ae15fcc1",
+      "asset": "/assets/product/watch/heron-watch-mobile.webp",
+      "outputSha256": "6888eba31cd6d8baff97e3211b7946636ea8a913d472a74b6feb199f2cc58c3e"
+    }
   ]
 }

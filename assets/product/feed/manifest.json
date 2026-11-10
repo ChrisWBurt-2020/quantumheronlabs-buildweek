@@ -1,16 +1,30 @@
 {
   "surface": "feed",
-  "dataset": "trustworthy-agent-design-v1",
-  "sourceRepository": "/home/debian/testproj/services/heronfeed",
-  "sourceGitRoot": "/home/debian/testproj",
-  "sourceCommit": "896e6d26cb9f52980232df12c8ee65375b742bb6",
-  "sourceTreeState": "clean (scoped repository; unrelated sewshore submodule excluded)",
-  "sourceRoute": "/?demo=public&capture=article&theme=light#article/heron-public-demo-feedback-loop",
-  "fixtureState": "deterministic public-v1 article fixture; no account, model call, or persistent write",
-  "captureCommand": "playwright-cli -s=feed-capture run-code (desktop article and mobile feed view); cwebp -q 84",
-  "capturedAt": "2026-07-21T15:52:45Z",
+  "dataset": "public-live-capture-2026-11-10",
+  "sourceRepository": "n/a \u2014 live public surface capture, not a repo fixture",
+  "sourceGitRoot": "n/a",
+  "sourceCommit": "n/a",
+  "sourceTreeState": "n/a",
+  "sourceRoute": "https://heronfeed.quantumheronlabs.com/",
+  "fixtureState": "public reader view, no account, public RSS content only",
+  "captureCommand": "playwright screenshot --channel chrome --viewport-size <vp> --wait-for-timeout 7000 <route> out.png; PNG converted to WebP with Pillow (quality 82)",
+  "capturedAt": "2026-11-10T22:05:00Z",
   "captures": [
-    { "kind": "desktop", "viewport": { "width": 1440, "height": 1000 }, "route": "/?demo=public&capture=article&theme=light#article/heron-public-demo-feedback-loop", "sourceArtifact": "services/heronfeed/output/playwright/heronfeed-save2q-desktop.png", "sourceSha256": "e3b31c144ad303f38cf38c84a356cc5ece5f04577ce6b9c2e46bbb0b9fd4419c", "asset": "/assets/product/feed/heron-feed-desktop.webp", "outputSha256": "baf70bf22ed00366de63a361ef7c7a20dc73cfb2c770ebc913845ce4db422132" },
-    { "kind": "mobile", "viewport": { "width": 390, "height": 844 }, "route": "/?demo=public&capture=feed&theme=light", "sourceArtifact": "services/heronfeed/output/playwright/heronfeed-save2q-mobile.png", "sourceSha256": "4c6b80d3c6c3c641913794da894005286456b1d14641bb5999941c810c6f1a0d", "asset": "/assets/product/feed/heron-feed-mobile.webp", "outputSha256": "f5f0a433a28412f242659e665129852cc7eef79fcebe72ea162db7abead032b8" }
+    {
+      "kind": "desktop",
+      "viewport": "1440x1000",
+      "sourceArtifact": "playwright PNG capture of https://heronfeed.quantumheronlabs.com/ (PNG not retained in repo)",
+      "sourceSha256": "cb0b14a2c39d422afa327e8d89b6fd189fe4cfca4dbeb893d997f60ed1199482",
+      "asset": "/assets/product/feed/heron-feed-desktop.webp",
+      "outputSha256": "185ec6bd4f5d764b29f5794a7f5f9a57b54f9843a98e4008b0aa5fe44bae5afd"
+    },
+    {
+      "kind": "mobile",
+      "viewport": "390x844",
+      "sourceArtifact": "playwright PNG capture of https://heronfeed.quantumheronlabs.com/ (PNG not retained in repo)",
+      "sourceSha256": "b963e88c3f888160a62d09d364ac55c3f227dadf3efd5018c854a22e4c311ba2",
+      "asset": "/assets/product/feed/heron-feed-mobile.webp",
+      "outputSha256": "da1b32102eff2f35306a3f1cc670df7185bdbd81312a367642e69b6afd07990e"
+    }
   ]
 }

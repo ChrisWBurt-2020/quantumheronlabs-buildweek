@@ -3,95 +3,162 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// validate-site.mjs — root + platform release checks.
+// Rewritten 2026-11-10 (platform modernization): the previous version read
+// only the root page and asserted July 2026 Build Week content on it
+// (judge mode, guided context handoffs, July capture manifests), so it
+// failed on the contracting root and never opened platform/index.html at
+// all. This version checks each page for what that page is supposed to be:
+//   root     = the contracting headline (services, pilot, proof)
+//   platform = the ancillary showcase (honest status lines, no false
+//              LIVE claims, no judge funnel, demos with sample data,
+//              and a contracting close back to /#services and /#pilot)
+// It also acts as the root+platform shared-file regression check: both
+// pages are parsed and must carry the current cache-bust version, so an
+// edit to shared files (styles.css, script.js, …) that breaks either
+// page fails here.
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const html = await readFile(path.join(root, "index.html"), "utf8");
 const errors = [];
-const count = (pattern) => (html.match(pattern) || []).length;
-const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const CACHE_BUST = "20261110a";
+const BUILD_STAMP = "2026.11.10.1";
 
-if (count(/<article\b/g) !== count(/<\/article>/g)) errors.push("article tags are unbalanced");
-if (count(/<section\b/g) !== count(/<\/section>/g)) errors.push("section tags are unbalanced");
-
-const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
-const duplicates = [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
-if (duplicates.length) errors.push(`duplicate IDs: ${duplicates.join(", ")}`);
-
-for (const surface of ["feed", "graph", "learn", "client"]) {
-  const link = [...html.matchAll(/href="([^"]+)"/g)]
-    .map((match) => match[1].replaceAll("&amp;", "&"))
-    .find((value) => value.includes(`heron_to=${surface}`));
-  if (!link) {
-    errors.push(`missing ${surface} context handoff`);
-    continue;
-  }
-  const params = new URL(link).searchParams;
-  for (const key of ["heron_v", "heron_from", "heron_to", "trace", "capsule", "object", "learning_domain", "archetype", "source_url", "source_title"]) {
-    if (!params.get(key)) errors.push(`${surface} handoff is missing ${key}`);
+async function load(rel) {
+  try {
+    return await readFile(path.join(root, rel), "utf8");
+  } catch {
+    errors.push(`missing required file: ${rel}`);
+    return "";
   }
 }
 
+function structuralChecks(label, html) {
+  const count = (pattern) => (html.match(pattern) || []).length;
+  if (count(/<article\b/g) !== count(/<\/article>/g)) errors.push(`${label}: article tags are unbalanced`);
+  if (count(/<section\b/g) !== count(/<\/section>/g)) errors.push(`${label}: section tags are unbalanced`);
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+  const dupes = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+  if (dupes.length) errors.push(`${label}: duplicate IDs: ${dupes.join(", ")}`);
+  return ids;
+}
+
+function mustInclude(label, html, needle, why) {
+  if (!html.includes(needle)) errors.push(`${label}: missing ${why} (expected: ${needle})`);
+}
+function mustExclude(label, html, needle, why) {
+  if (html.includes(needle)) errors.push(`${label}: forbidden ${why} present (found: ${needle})`);
+}
+
+// ---------------------------------------------------------------- root
+const home = await load("index.html");
+structuralChecks("root", home);
+for (const [needle, why] of [
+  ['id="services"', "services section"],
+  ['id="pilot"', "pilot section"],
+  ["$5,000", "fixed pilot price"],
+  ["Task Fabric", "Task Fabric proof line"],
+  ['href="platform/"', "link to the platform showcase"],
+  ["tailnet only", "honest private status for Learn on root"],
+]) mustInclude("root", home, needle, why);
+mustExclude("root", home, "audience=judge", "retired judge funnel");
+mustExclude("root", home, 'id="judge"', "retired judge section");
+
+// ------------------------------------------------------------ platform
+const platform = await load("platform/index.html");
+structuralChecks("platform", platform);
+for (const [needle, why] of [
+  ['id="now"', "since-July lead surfaces section"],
+  ['id="original"', "original surfaces section"],
+  ['id="build-week"', "Build Week history section"],
+  ['id="demos"', "public demos section"],
+  ['id="contracting"', "contracting close section"],
+  ['href="/#services"', "contracting close link to services"],
+  ['href="/#pilot"', "contracting close link to pilot"],
+  ["57M+", "local corpora scale line"],
+  ["23 live personas, human-gated, routed to 6 outputs", "personas line"],
+  ['href="learn/"', "link to the Learn sample demo"],
+  ['href="graph/"', "link to the Graph sample demo"],
+  ["sample data", "sample-data labelling for the public demos"],
+  [`BUILD ${BUILD_STAMP}`, "current platform build stamp"],
+  [`styles.css?v=${CACHE_BUST}`, "current shared stylesheet cache-bust"],
+  [`script.js?v=${CACHE_BUST}`, "current shared script cache-bust"],
+]) mustInclude("platform", platform, needle, why);
+for (const [needle, why] of [
+  ["learn.quantumheronlabs.com", "dead Learn subdomain claim (404; real Study Loop is private)"],
+  ["d06a5735", "hard-coded July judge trace ID"],
+  ["heron_guide", "retired judge/guide funnel parameters"],
+  ["Your first three minutes", "retired judge first-three-minutes funnel"],
+  ["companion/bootstrap", "404 companion bootstrap"],
+  ["data-heron-companion", "companion SDK bootstrap (removed from platform)"],
+  ["assets/brand/surfaces/", "removed unprovenanced July surface icon set"],
+  ["Captured from the live app", "July fixture captures presented as current"],
+  ["GPT-5.6", "retired single-model centre (routing/governor story instead)"],
+]) mustExclude("platform", platform, needle, why);
+
+// ------------------------------------------------------- public demos
+for (const demo of ["learn", "graph"]) {
+  const html = await load(`platform/${demo}/index.html`);
+  if (!html) continue;
+  structuralChecks(`platform/${demo}`, html);
+  mustInclude(`platform/${demo}`, html, "Demo — sample data", "visible sample-data label");
+  mustInclude(`platform/${demo}`, html, "private", "honest private status for the real surface");
+  mustExclude(`platform/${demo}`, html, "learn.quantumheronlabs.com", "dead Learn subdomain");
+  mustExclude(`platform/${demo}`, html, "graph.quantumheronlabs.com", "private Graph subdomain presented as public");
+  mustExclude(`platform/${demo}`, html, "fetch(", "backend calls from a static dummy demo");
+}
+
+// ------------------------------------------------------ required files
 for (const file of [
-  "styles.css", "script.js", "manifest.webmanifest", "robots.txt", "sitemap.xml",
-  "favicon.png", "assets/brand/quantum-heron.png", "assets/vendor/heron-companion/heron-companion.png",
-  "assets/vendor/heron-companion/heron-companion.iife.js", "assets/vendor/heron-companion/heron-companion.css",
-  "assets/vendor/heron-companion/heron-companion-v3.webp", "assets/vendor/heron-companion/heron-companion-v3.png",
-  "assets/vendor/heron-companion/release-manifest.json",
-  "assets/brand/heron-og-20260719.png",
-  ...["feed", "learn", "watch", "client", "graph"].map((surface) => `assets/brand/surfaces/heron-${surface}.png`),
-  ...["feed", "learn", "watch", "client", "graph"].flatMap((surface) => [
-    `assets/product/${surface}/heron-${surface}-desktop.webp`,
-    `assets/product/${surface}/heron-${surface}-mobile.webp`,
-    `assets/product/${surface}/manifest.json`,
-  ]),
+  "styles.css", "script.js", "heron-mascot.js", "heron-particles.js",
+  "manifest.webmanifest", "robots.txt", "sitemap.xml", "favicon.png",
+  "assets/brand/quantum-heron.png", "assets/brand/heron-og-20260719.png",
+  "platform/index.html", "platform/learn/index.html", "platform/graph/index.html",
 ]) {
   try { await access(path.join(root, file)); } catch { errors.push(`missing required asset: ${file}`); }
 }
 
-const captureHashes = new Set();
-for (const surface of ["feed", "learn", "watch", "client", "graph"]) {
-  const manifestPath = path.join(root, `assets/product/${surface}/manifest.json`);
+// The unprovenanced July icon set stays removed (one image system).
+for (const surface of ["watch", "feed", "graph", "learn", "client"]) {
   try {
-    const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-    for (const key of ["surface", "dataset", "sourceRepository", "sourceGitRoot", "sourceCommit", "sourceTreeState", "sourceRoute", "fixtureState", "captureCommand", "capturedAt"]) {
-      if (!manifest[key]) errors.push(`${surface} manifest is missing ${key}`);
-    }
-    if (manifest.surface !== surface) errors.push(`${surface} manifest surface does not match`);
-    if (/dirty/i.test(String(manifest.sourceTreeState))) errors.push(`${surface} capture was sourced from a dirty tree`);
-    if (manifest.dataset !== "trustworthy-agent-design-v1") errors.push(`${surface} does not use the shared fixture bundle`);
-    if (!Array.isArray(manifest.captures) || manifest.captures.length !== 2) errors.push(`${surface} manifest must contain desktop and mobile captures`);
-    for (const capture of manifest.captures || []) {
-      for (const key of ["kind", "viewport", "sourceArtifact", "sourceSha256", "asset", "outputSha256"]) {
-        if (!capture[key]) errors.push(`${surface} ${capture.kind || "capture"} is missing ${key}`);
-      }
-      if (captureHashes.has(capture.sourceSha256)) errors.push(`duplicate screenshot source hash: ${capture.sourceSha256}`);
-      captureHashes.add(capture.sourceSha256);
-      if (capture.asset) {
-        const assetPath = path.join(root, capture.asset.replace(/^\//, ""));
-        try {
-          const bytes = await readFile(assetPath);
-          if (sha256(bytes) !== capture.outputSha256) errors.push(`${surface} ${capture.kind} output hash does not match`);
-        } catch { errors.push(`${surface} ${capture.kind} asset cannot be read`); }
-      }
-    }
-  } catch (error) {
-    errors.push(`${surface} manifest is invalid: ${error.message}`);
-  }
-}
-if (captureHashes.size !== 10) errors.push(`expected 10 unique screenshot sources, found ${captureHashes.size}`);
-for (const stale of ["welcome screen", "SIGNED-OUT ENTRY", "privacy-safe signed-out welcome state"]) {
-  if (html.includes(stale)) errors.push(`stale product capture copy remains: ${stale}`);
+    await access(path.join(root, `assets/brand/surfaces/heron-${surface}.png`));
+    errors.push(`assets/brand/surfaces/heron-${surface}.png must be removed (unprovenanced July set)`);
+  } catch { /* expected: absent */ }
 }
 
-if (!html.includes('data-audience-link="judge"') || !html.includes('id="judge"')) errors.push("judge mode entry is missing");
-if (!html.includes("heron_guide=public") || !html.includes("demo=public")) errors.push("guided public entry is missing");
-if (!html.includes("heron_guide=judge") || !html.includes("heron_step=1")) errors.push("guided judge entry is missing");
-if (!html.includes('data-heron-app="quantum"') || !html.includes('data-anonymous="true"')) errors.push("public companion bootstrap is missing");
-for (const phrase of ["User-created domains", "Combinable archetypal", "multimodal"]) {
-  if (!html.includes(phrase)) errors.push(`landing copy is missing implemented capability: ${phrase}`);
+// ------------------------------------------- fresh capture manifests
+// Watch + Feed were recaptured 2026-11-10 from their public surfaces.
+// Their manifests must be dated, complete, and hash-true. The July 2026
+// manifests for graph/learn/client remain in the repo as an archive and
+// are deliberately NOT checked here — those captures are not presented
+// on the platform page as current.
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+for (const surface of ["watch", "feed"]) {
+  let manifest;
+  try {
+    manifest = JSON.parse(await readFile(path.join(root, `assets/product/${surface}/manifest.json`), "utf8"));
+  } catch (error) {
+    errors.push(`${surface} capture manifest is invalid: ${error.message}`);
+    continue;
+  }
+  if (!String(manifest.capturedAt || "").startsWith("2026-11-10")) errors.push(`${surface} manifest is not the 2026-11-10 recapture`);
+  if (!Array.isArray(manifest.captures) || manifest.captures.length !== 2) errors.push(`${surface} manifest must contain desktop and mobile captures`);
+  for (const capture of manifest.captures || []) {
+    if (!capture.asset || !capture.outputSha256) { errors.push(`${surface} ${capture.kind || "capture"} is missing asset/outputSha256`); continue; }
+    try {
+      const bytes = await readFile(path.join(root, capture.asset.replace(/^\//, "")));
+      if (sha256(bytes) !== capture.outputSha256) errors.push(`${surface} ${capture.kind} output hash does not match its manifest`);
+    } catch { errors.push(`${surface} ${capture.kind} asset cannot be read`); }
+  }
 }
+
+// ------------------------------------------------------------- sitemap
+const sitemap = await load("sitemap.xml");
+mustInclude("sitemap", sitemap, "<loc>https://quantumheronlabs.com/platform/</loc>", "platform entry");
+mustInclude("sitemap", sitemap, "<lastmod>2026-11-10</lastmod>", "refreshed lastmod");
+
 if (errors.length) {
-  console.error("Landing validation failed:");
+  console.error("Site validation failed:");
   errors.forEach((error) => console.error(`- ${error}`));
   process.exit(1);
 }
-console.log(`Validated landing structure, ${ids.length} unique IDs, four context handoffs, ten fresh captures, and five complete manifests.`);
+console.log("Validated root (contracting), platform (showcase, honest status, no judge funnel), Learn + Graph sample demos, shared-file cache-busts, and sitemap.");

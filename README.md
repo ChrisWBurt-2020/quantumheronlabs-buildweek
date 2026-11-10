@@ -1,65 +1,32 @@
-# Heron — Your private AI exocortex
+# Quantum Heron Labs — site
 
-The independently deployable landing page for Quantum Heron Labs' OpenAI Build Week submission: one private, provenance-first system connecting **HeronFeed**, **Heron Learn**, **HeronWatch**, **HeronClient**, and **Heron Graph**.
+The public site for Quantum Heron Labs LLC. Two surfaces, two jobs:
+
+- **Root `/` is the contracting page** — the headline. Services, method, and the fixed-price $5,000 Field Service Workflow Pilot. This is what visitors are meant to act on.
+- **`/platform/` is the showcase** — ancillary proof. What the Heron system does today, with an honest live / demo / private status for every surface. It sends impressed visitors back to `/#services` and `/#pilot`.
 
 ## Live experience
 
-- Submission landing page: <https://quantumheronlabs.com>
-- Judge guide: <https://quantumheronlabs.com/?audience=judge#judge>
-- HeronFeed: <https://heronfeed.quantumheronlabs.com>
-- Heron Learn: <https://learn.quantumheronlabs.com>
-- HeronWatch: <https://watch.quantumheronlabs.com>
-- HeronClient: <https://heronclient.quantumheronlabs.com>
-- Heron Graph: <https://graph.quantumheronlabs.com>
-- Track: **Apps for Your Life**
+- Contracting (root): <https://quantumheronlabs.com/>
+- Platform showcase: <https://quantumheronlabs.com/platform/>
+- Privacy: <https://quantumheronlabs.com/privacy/>
+- Platform public demos (fictional sample data, in-browser only):
+  - Learn demo: <https://quantumheronlabs.com/platform/learn/>
+  - Graph demo: <https://quantumheronlabs.com/platform/graph/>
+- Original Build Week surfaces: Watch (public demo), Feed, Client — linked from `/platform/` with their current status. The real Learn / Study Loop and the real Heron Graph are **private**; there is no public live Learn, and `learn.quantumheronlabs.com` is not a public destination. The public demos above exist precisely so a prospect can see the shape without touching private data.
 
-## The idea
+## History
 
-Most media ends at consumption. HeronWatch turns a selected source into a deliberate, inspectable loop:
+This repository began as the OpenAI Build Week 2026 submission site (July 13–21, 2026, track: Apps for Your Life). That history is preserved, dated, in:
 
-1. **HeronWatch** synchronizes media with Understand, Verify, and Use projections plus the Credibility Hub lens.
-2. **GPT-5.6** produces schema-constrained semantic objects while provenance retains exact segments, retrieval, inference, and uncertainty.
-3. **HeronFeed** records an account-scoped attention signal and related-source context.
-4. **Heron Graph** materializes the selected claims, concepts, entities, evidence, and relationships.
-5. **Heron Learn** schedules a source-evaluation or retrieval LearningUnit.
-6. **HeronClient** creates a private draft ActionIntent while approval policy continues to govern execution.
+- [`SUBMISSION.md`](./SUBMISSION.md) — **historical record** of the July submission
+- [`BUILDWEEK_DELTA.md`](./BUILDWEEK_DELTA.md) — **historical record** of the Build Week changes
 
-The human remains the editor. AI helps at the reasoning boundary; deterministic product code owns identity, source state, learning schedules, progress, and UI. Cross-surface links use a versioned context envelope so trace, capsule, source, and semantic-object identity can survive the transition without exposing private destination IDs. The five destination applications validate that envelope in the shared Companion SDK, preserve it across a reload, emit a `heron:context-received` browser event, and show a compact handoff receipt.
+The `/platform/` page carries a dated Build Week history section as provenance. There is no judge funnel: the July judge guide URL, guided trace links, and contest framing were retired in the November 2026 modernization.
 
-## What is new during Build Week
+## What the platform is now (November 2026)
 
-Heron predates the event, so the submission explicitly separates prior work from the July 13–21 work:
-
-- Redesigned Heron Learn around one useful next step and 5/10/15-minute sessions.
-- Launched Heron Learn at its canonical production domain.
-- Connected HeronFeed activity to a Learn reinforcement loop.
-- Added one verified Heron account across both applications.
-- Recovered cross-device account confirmation and hardened deployed permissions/secrets.
-- Established protected build, approval, and release paths.
-- Built this public submission story and independent production container with Codex.
-- Added canonical cross-app navigation across all five surfaces and launched HeronWatch.
-- Reworked Heron Graph navigation, labels, touch controls, synthesis, and Companion SDK access.
-- Built the Heron Cognitive Runtime, versioned contracts, Watch workspace, private capsules, Cognitive Receipts, and idempotent five-surface projections.
-
-The timestamped product commit history lives in the primary application repository. This repository contains the public submission site and its deployment boundary.
-
-See [`SUBMISSION.md`](./SUBMISSION.md) for the judging-criteria map, three-minute demo storyboard, deadline checklist, and highest-risk gaps.
-
-## Codex and GPT-5.6
-
-Codex was used as an engineering and design partner for repository analysis, implementation, browser QA, deployment diagnosis, release hardening, documentation, and construction of this site.
-
-GPT-5.6 is used at the synthesis boundary: turning material a user has deliberately selected into structured explanations, steelman views, questions, and learning prompts. The surrounding system stays deterministic and inspectable.
-
-The QHL-owned public demo script is narrated with an AI-generated OpenAI built-in voice; the transcript and timed captions are included with the source asset.
-
-Before final submission, the Devpost entry should include:
-
-- The `/feedback` session ID from the primary Codex build task.
-- A public YouTube demo with audio explaining Codex usage.
-- The application code repository, or private-repository access for `testing@devpost.com` and `build-week-event@openai.com`.
-- Sample/test-account guidance that lets judges reach a useful moment quickly.
-- Clear evidence of the GPT-5.6 call path and structured response contract.
+Since July, Heron grew past the five contest surfaces. `/platform/` leads with what shipped since: Listen + Heron Press, the Study Loop, Field / Share-to-Heron / Now, Book Club as a worked example, local corpora at 57M+ records (full-text, local), and 23 human-gated voice personas routed to 6 outputs under a governed, local-first model router. The original five surfaces are demoted to a dated section with one honest status line each.
 
 ## Run locally
 
@@ -69,9 +36,9 @@ No package installation or build step is required:
 python3 -m http.server 8080
 ```
 
-Then open <http://127.0.0.1:8080>.
+Then open <http://127.0.0.1:8080/> and <http://127.0.0.1:8080/platform/>.
 
-Validate the static structure, product assets, judge-mode entry, JavaScript syntax, and four context links with:
+Validate root + platform structure and claims with:
 
 ```bash
 npm run lint
@@ -85,24 +52,19 @@ docker compose up -d --build
 curl -fsS http://127.0.0.1:8465/health
 ```
 
-The container is read-only, drops all capabilities except the minimum Nginx runtime set, and binds only to localhost. Host Nginx terminates TLS and proxies `quantumheronlabs.com` to port `8465`.
-
-## Design detector
-
-CI runs the pinned Impeccable detector (`impeccable@4.8.2`, engine
-0.1.21 as-served) over `index.html` + `styles.css` as a non-blocking
-check — findings land in the job summary and the `impeccable-report`
-artifact, waivers-with-reason in `.impeccable/config.json`. Unslop
-remains the design authority; the detector is its mechanical
-complement. Full notes: [`docs/impeccable-detector.md`](./docs/impeccable-detector.md).
+The container is read-only, drops all capabilities except the minimum Nginx runtime set, and binds only to localhost. Host Nginx terminates TLS and proxies `quantumheronlabs.com` to port `8465`. Deployment is a separate, explicitly approved step; this repository's default flow is branch → review → merge → deploy from the canonical VPS checkout.
 
 ## Files
 
-- `index.html` — semantic landing-page structure and submission narrative
-- `styles.css` — responsive visual system with no external font or asset dependency
+- `index.html` — the contracting landing page (root, the headline)
+- `platform/index.html` — the platform showcase (ancillary)
+- `platform/learn/index.html` — public Learn demo, fictional sample data, self-contained
+- `platform/graph/index.html` — public Graph demo, fictional sample data, self-contained
+- `privacy/index.html` — privacy page
+- `styles.css` — shared responsive visual system (root, platform, privacy); shared-file changes are covered by the validator's root + platform checks
 - `script.js` — mobile navigation, progressive reveal, and interactive loop demo
-- `package.json` / `scripts/validate-site.mjs` — dependency-free release checks for the static site
-- `assets/product/<surface>/` — real, privacy-reviewed desktop/mobile captures plus a source manifest for every surface
+- `package.json` / `scripts/validate-site.mjs` — dependency-free release checks for root and platform
+- `assets/product/<surface>/` — July 2026 capture archive (dated manifests); no longer presented on `/platform/` as current imagery
 - `nginx.conf` — static serving, health check, caching, CSP, and security headers
 - `Dockerfile` / `docker-compose.yml` — independent production runtime
 - `deploy/quantumheronlabs.com.conf` — source-controlled host Nginx proxy configuration
@@ -113,9 +75,4 @@ complement. Full notes: [`docs/impeccable-detector.md`](./docs/impeccable-detect
 - Keyboard-friendly links and controls
 - Reduced-motion support
 - Responsive layouts down to narrow mobile screens
-- No third-party JavaScript, tracking, font, or image requests; all product imagery is local
-- Static assets served with caching and a restrictive Content Security Policy
-
-## Disclosure
-
-HeronFeed, Heron Learn, HeronClient, and parts of Heron Graph include pre-existing work. The Build Week additions are listed above and should be corroborated by timestamped Codex sessions and commit history. HeronWatch and its public precomputed demo are live. The submission distinguishes live model runs, precomputed packets, and non-model fallbacks, and does not claim unfinished archetypal lenses. Capture manifests record the source commit and dirty-tree fingerprint so the landing assets are auditable without pretending they came from a clean release commit.
+- No third-party JavaScript, tracking, font, or image requests on root or platform

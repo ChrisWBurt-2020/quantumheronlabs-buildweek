@@ -10,7 +10,7 @@
   let frame = 0;
   let width = 0;
   let height = 0;
-  let palette = { primary: "#d9ff5b", secondary: "#ff7448", line: "#121816", alpha: 0.44 };
+  let palette = { primary: "#d7b37c", secondary: "#c4866e", line: "#121816", alpha: 0.44 };
 
   function cssValue(name, fallback) {
     return getComputedStyle(root).getPropertyValue(name).trim() || fallback;
@@ -20,9 +20,9 @@
     const dark = root.dataset.theme === "dark" || root.classList.contains("dark") ||
       (!root.dataset.theme && getComputedStyle(root).colorScheme.includes("dark"));
     palette = {
-      primary: cssValue("--particle-primary", cssValue("--domain-primary", cssValue("--accent", "#d9ff5b"))),
-      secondary: cssValue("--particle-secondary", "#ff7448"),
-      line: dark ? "#f4f2e9" : "#121816",
+      primary: cssValue("--particle-primary", cssValue("--domain-primary", cssValue("--accent", "#d7b37c"))),
+      secondary: cssValue("--particle-secondary", "#c4866e"),
+      line: dark ? "#d6d6c9" : "#121816",
       alpha: dark ? 0.58 : 0.44
     };
   }

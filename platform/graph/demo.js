@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  var COLORS = { place:"#1f5c4d", landmark:"#c17a28", business:"#3a6ea5", nature:"#7a9a4d", culture:"#8a5ea8" };
+  var COLORS = { place:"#829888", landmark:"#c49a68", business:"#7693a3", nature:"#a6b8a0", culture:"#9d8190" };
 
   var NODES = [
     { id:"town", label:"Marrow Creek", short:"Marrow Creek", type:"place", typeLabel:"Place · Town", x:360, y:250, r:22,

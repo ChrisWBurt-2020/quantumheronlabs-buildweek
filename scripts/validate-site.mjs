@@ -170,6 +170,22 @@ for (const surface of ["watch", "feed"]) {
   }
 }
 
+// ------------------------------------------- Dockerfile serve check
+// The image COPYs root files by explicit allowlist (platform/, assets/,
+// and privacy/ go wholesale). A required root-level file missing from
+// the COPY line builds green and then 404s live — exactly what happened
+// to landing.css on its first deploy (2026-11-10). Guard it here.
+const dockerfile = await load("Dockerfile");
+const copyLine = dockerfile.split("\n").find((line) => line.startsWith("COPY index.html")) || "";
+for (const file of [
+  "styles.css", "landing.css", "script.js", "heron-mascot.js", "heron-particles.js",
+  "manifest.webmanifest", "robots.txt", "sitemap.xml", "favicon.png",
+]) {
+  if (!copyLine.includes(` ${file} `) && !copyLine.includes(` ${file}`)) {
+    errors.push(`Dockerfile: required root file ${file} is not on the image COPY allowlist (would 404 live)`);
+  }
+}
+
 // ------------------------------------------------------------- sitemap
 const sitemap = await load("sitemap.xml");
 mustInclude("sitemap", sitemap, "<loc>https://quantumheronlabs.com/platform/</loc>", "platform entry");

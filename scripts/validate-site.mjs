@@ -82,6 +82,7 @@ for (const [needle, why] of [
   [`BUILD ${BUILD_STAMP}`, "current platform build stamp"],
   [`styles.css?v=${CACHE_BUST}`, "current shared stylesheet cache-bust"],
   [`script.js?v=${CACHE_BUST}`, "current shared script cache-bust"],
+  [`platform.css?v=${CACHE_BUST}`, "platform-only stylesheet (external; the live CSP blocks inline styles)"],
 ]) mustInclude("platform", platform, needle, why);
 for (const [needle, why] of [
   ["learn.quantumheronlabs.com", "dead Learn subdomain claim (404; real Study Loop is private)"],
@@ -93,6 +94,7 @@ for (const [needle, why] of [
   ["assets/brand/surfaces/", "removed unprovenanced July surface icon set"],
   ["Captured from the live app", "July fixture captures presented as current"],
   ["GPT-5.6", "retired single-model centre (routing/governor story instead)"],
+  ["<style", "inline style block (blocked by the live CSP; use platform.css)"],
 ]) mustExclude("platform", platform, needle, why);
 
 // ------------------------------------------------------- public demos
@@ -105,6 +107,17 @@ for (const demo of ["learn", "graph"]) {
   mustExclude(`platform/${demo}`, html, "learn.quantumheronlabs.com", "dead Learn subdomain");
   mustExclude(`platform/${demo}`, html, "graph.quantumheronlabs.com", "private Graph subdomain presented as public");
   mustExclude(`platform/${demo}`, html, "fetch(", "backend calls from a static dummy demo");
+  // The live site CSP (script-src/style-src 'self') blocks inline code:
+  // demo CSS/JS must live in external files or the demos render inert.
+  // (Regression guard for the 2026-11-10 live defect: Graph drew 0 nodes
+  // and the Learn quiz never ran because both shipped inline.)
+  mustInclude(`platform/${demo}`, html, 'href="styles.css"', "external demo stylesheet");
+  mustInclude(`platform/${demo}`, html, 'src="demo.js"', "external demo script");
+  mustExclude(`platform/${demo}`, html, "<style", "inline style block (blocked by the live CSP)");
+  mustExclude(`platform/${demo}`, html, ' style="', "inline style attribute (blocked by the live CSP)");
+  mustExclude(`platform/${demo}`, html, "<script>", "inline script block (blocked by the live CSP)");
+  const demoJs = await load(`platform/${demo}/demo.js`);
+  mustExclude(`platform/${demo}/demo.js`, demoJs, "fetch(", "backend calls from a static dummy demo");
 }
 
 // ------------------------------------------------------ required files
@@ -113,6 +126,9 @@ for (const file of [
   "manifest.webmanifest", "robots.txt", "sitemap.xml", "favicon.png",
   "assets/brand/quantum-heron.png", "assets/brand/heron-og-20260719.png",
   "platform/index.html", "platform/learn/index.html", "platform/graph/index.html",
+  "platform/platform.css",
+  "platform/learn/styles.css", "platform/learn/demo.js",
+  "platform/graph/styles.css", "platform/graph/demo.js",
 ]) {
   try { await access(path.join(root, file)); } catch { errors.push(`missing required asset: ${file}`); }
 }

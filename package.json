@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "node --check script.js && node --check heron-mascot.js && node --check heron-particles.js && node scripts/validate-site.mjs",
+    "lint": "node --check script.js && node --check heron-mascot.js && node --check heron-particles.js && node --check platform/learn/demo.js && node --check platform/graph/demo.js && node scripts/validate-site.mjs",
     "test": "node scripts/validate-site.mjs"
   }
 }

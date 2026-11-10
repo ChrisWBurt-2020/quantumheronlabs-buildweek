@@ -20,6 +20,16 @@
     <link rel="icon" href="/favicon.png?v=20261110a" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/brand/icon-192.png?v=20261110a" />
     <link rel="stylesheet" href="/styles.css?v=20261110a" />
+    <style>
+      /* Platform-only: loop nodes carry no icon column — the unprovenanced
+         July surface-icon set was removed in the 2026-11-10 modernization,
+         and the shared stylesheet's loop-node grid expects that column. */
+      .stage-content .loop-node { grid-template-columns: 34px minmax(0, 1fr) auto; }
+      @media (max-width: 640px) {
+        .stage-content .loop-node { grid-template-columns: 26px minmax(0, 1fr); }
+        .stage-content .loop-node .node-tag { display: none; }
+      }
+    </style>
     <script src="/heron-mascot.js?v=20261110a" defer></script>
     <script src="/heron-particles.js?v=20261110a" defer></script>
     <script src="/script.js?v=20261110a" defer></script>
@@ -29,7 +39,7 @@
 
     <header class="site-header" data-header>
       <a class="brand" href="/" aria-label="Quantum Heron Labs home">
-        <span class="brand-mark" data-heron-pet="orbit" data-heron-label="Quantum Heron" aria-hidden="true"></span>
+        <span class="brand-mark" aria-hidden="true"><img src="/assets/brand/quantum-heron.png" alt="" /></span>
         <span><strong>HERON</strong><small>Quantum Heron Labs</small></span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>

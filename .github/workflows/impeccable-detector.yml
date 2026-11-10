@@ -1,0 +1,98 @@
+name: Impeccable detector
+
+# Pinned design detector for the landing surface (pbakaus/impeccable).
+#
+# Pin: npm impeccable@4.8.2. The bundled detector engine as served by
+# that pin is 0.1.21+engine (verified locally 2026-11-09; the upstream
+# engine-v0.1.22 tag is NOT what npm 4.8.2 bundles). Re-check the engine
+# version on any pin bump — upstream's release cadence is daily-class,
+# so never float this version.
+#
+# NON-BLOCKING by design: the detector step captures its exit code and
+# uploads the findings JSON as an artifact, but never fails the check.
+# Baseline at adoption (origin/main 897a747, landing surface
+# index.html + styles.css): 39 raw findings, 38 after the one reasoned
+# waiver in .impeccable/config.json. A hard-red CI from day one, over a
+# known baseline nobody has burned down yet, would train everyone to
+# ignore the tool. Ratchet later: once the baseline is burned down,
+# drop continue-on-error in a deliberate follow-up change.
+#
+# CI-only: no impeccable hooks are installed anywhere and live mode is
+# never run. IMPECCABLE_LIVE_COPY_AGENT stays off wherever this CLI is
+# used (live mode's Apply fallback can invoke an agent CLI with
+# approvals and sandboxing disabled — see docs/impeccable-detector.md).
+#
+# Design authority: unslop remains the estate's design authority. This
+# detector is its mechanical complement (deterministic rules, exact
+# contrast ratios, CI exit codes), not a second authority.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: impeccable-detector-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    name: Impeccable detector (non-blocking)
+    runs-on: ubuntu-latest
+    env:
+      IMPECCABLE_LIVE_COPY_AGENT: off
+      DO_NOT_TRACK: "1"
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+
+      - name: Run detector (pinned impeccable@4.8.2, engine 0.1.21)
+        id: detect
+        continue-on-error: true
+        run: |
+          set +e
+          npx -y impeccable@4.8.2 detect --json index.html styles.css > impeccable-report.json
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Summarize findings
+        if: always()
+        env:
+          DETECT_EXIT: ${{ steps.detect.outputs.exit_code }}
+        run: |
+          {
+            echo "## Impeccable detector (non-blocking)"
+            echo ""
+            echo "Pinned \`impeccable@4.8.2\` (bundled engine 0.1.21 as-served). Detector exit code: \`${DETECT_EXIT:-unknown}\` (0 = clean, 1 = target unscannable, 2 = findings present)."
+            echo ""
+            node <<'NODEEOF'
+          const fs = require("fs");
+          try {
+            const findings = JSON.parse(fs.readFileSync("impeccable-report.json", "utf8"));
+            const byRule = {};
+            for (const f of findings) byRule[f.antipattern] = (byRule[f.antipattern] || 0) + 1;
+            const rows = Object.entries(byRule).sort((a, b) => b[1] - a[1]);
+            console.log(`**${findings.length} findings** after the reasoned waivers in \`.impeccable/config.json\` (adoption baseline: 38). Full JSON: workflow artifact \`impeccable-report\`.`);
+            console.log("");
+            console.log("| Rule | Count |");
+            console.log("|---|---:|");
+            for (const [rule, count] of rows) console.log(`| ${rule} | ${count} |`);
+          } catch (e) {
+            console.log("Findings JSON could not be parsed (" + e.message + ") — the detector step log above is the record.");
+          }
+          NODEEOF
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload findings JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: impeccable-report
+          path: impeccable-report.json
+          if-no-files-found: warn

@@ -63,3 +63,21 @@ loopButton?.addEventListener('click', playLoop);
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
 }
+
+// Pilot brief: compose a structured email from the four brief fields and
+// hand it to the visitor's own mail client. No backend, nothing stored,
+// nothing sent until the visitor presses send in their client.
+const briefForm = document.querySelector('[data-pilot-brief]');
+briefForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(briefForm);
+  const lines = [
+    ['What workflow is failing?', data.get('workflow')],
+    ['Who uses it?', data.get('users')],
+    ['What systems or documents are involved?', data.get('systems')],
+    ['What would a successful pilot demonstrate?', data.get('success')],
+  ].map(([label, value]) => `${label}\n${String(value || '').trim() || '—'}`);
+  const subject = encodeURIComponent('Field Service Workflow Pilot — brief');
+  const body = encodeURIComponent(lines.join('\n\n'));
+  window.location.href = `mailto:chris@quantumheronlabs.com?subject=${subject}&body=${body}`;
+});

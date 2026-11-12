@@ -37,3 +37,22 @@
   .example-flow li { border-left: 0; border-top: 1px solid var(--line); }
   .example-flow li:first-child { border-top: 0; }
 }
+
+/* 2026-11-12 conversion batch (slate 6): focus visibility, hero capture, pilot brief form. */
+:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.hero-capture { grid-column: 1 / -1; margin: 8px 0 0; }
+.hero-capture img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.hero-capture figcaption { margin-top: 10px; font-size: 13px; line-height: 1.55; color: var(--ink-mute); }
+.hero-capture figcaption span { color: var(--ink-soft); }
+.pilot-proof { list-style: none; margin: 18px 0 0; padding: 0; }
+.pilot-proof li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+.aside-link { margin: 16px 0 10px; }
+.aside-link a, .text-cta { color: var(--ink); font-weight: 700; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.pilot-brief { margin-top: 34px; border: 1px solid var(--line); padding: 26px; display: grid; gap: 10px; }
+.pilot-brief h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.4vw, 32px); }
+.pilot-brief .brief-intro { margin: 0 0 8px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.pilot-brief label { font-size: 13px; font-weight: 700; margin-top: 8px; }
+.pilot-brief input, .pilot-brief textarea { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid var(--line); background: var(--paper-deep); color: var(--ink); font: inherit; font-size: 14px; }
+.pilot-brief button { justify-self: start; margin-top: 12px; cursor: pointer; }
+.pilot-brief .brief-alt { margin: 6px 0 0; font-size: 13px; color: var(--ink-mute); }
+.pilot-brief .brief-alt a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }

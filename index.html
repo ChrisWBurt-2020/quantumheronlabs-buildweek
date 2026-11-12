@@ -20,7 +20,7 @@
     <link rel="icon" href="favicon.png?v=20260720d" type="image/png" />
     <link rel="apple-touch-icon" href="assets/brand/icon-192.png?v=20260720d" />
     <link rel="stylesheet" href="styles.css?v=20261110c" />
-    <link rel="stylesheet" href="landing.css?v=20261110c" />
+    <link rel="stylesheet" href="landing.css?v=20261112a" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,7 +61,7 @@
     </script>
     <script src="heron-mascot.js?v=20260720d" defer></script>
     <script src="heron-particles.js?v=20261110c" defer></script>
-    <script src="script.js?v=20260720b" defer></script>
+    <script src="script.js?v=20261112a" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -78,7 +78,7 @@
         <a href="#services">Services</a>
         <a href="#pilot">The $5K pilot</a>
         <a href="platform/">Platform</a>
-        <a class="nav-cta" href="mailto:chris@quantumheronlabs.com">Start a conversation <span>↗</span></a>
+        <a class="nav-cta" href="#pilot-brief">Start a conversation <span>↓</span></a>
       </nav>
     </header>
 
@@ -91,7 +91,7 @@
           <p class="hero-lede">I&rsquo;m Chris Burt. I build the agent harness that makes AI agents reliable in production &mdash; task orchestration, tool and MCP integration, durable state, spend governance, and observability. I contract through my own LLC on scoped, demo-driven engagements: fixed outcomes, weeks not quarters.</p>
           <div class="hero-actions">
             <a class="button button-dark" href="#pilot">See the $5,000 pilot <span>↓</span></a>
-            <a class="button button-ghost" href="mailto:chris@quantumheronlabs.com">Start a conversation <span>↗</span></a>
+            <a class="button button-ghost" href="#pilot-brief">Start with the pilot brief <span>↓</span></a>
           </div>
           <div class="hero-proofline reveal" aria-label="Live surfaces">
             <span class="hpl-label">Proof, not promises</span>
@@ -109,11 +109,18 @@
             <div class="price">$5,000</div>
             <p>One painful workflow. Working software, not slides — two to four weeks, one fixed fee. If it runs long, that&rsquo;s my risk.</p>
           </div>
-          <div class="hire-cta">
-            <a class="button button-lime" href="mailto:chris@quantumheronlabs.com?subject=Field%20Service%20Workflow%20Pilot">Start a conversation <span>↗</span></a>
-            <span class="hire-note">1099/C2C · REMOTE-FIRST · YOU OWN EVERYTHING BUILT</span>
-          </div>
+          <ul class="pilot-proof">
+            <li>One workflow, one pilot team, one fixed fee</li>
+            <li>Written evidence report: what worked, what didn&rsquo;t</li>
+            <li>Everything built is yours</li>
+          </ul>
+          <p class="aside-link"><a href="#pilot-brief">Start with the pilot brief &darr;</a></p>
+          <span class="hire-note">1099/C2C · REMOTE-FIRST · YOU OWN EVERYTHING BUILT</span>
         </aside>
+        <figure class="hero-capture reveal">
+          <img src="assets/product/watch/heron-watch-desktop.webp?v=20261110a" width="1440" height="1000" loading="lazy" decoding="async" alt="HeronWatch public demo on November 10, 2026, showing the source-synchronized player and analysis lenses" />
+          <figcaption><span>Captured 2026-11-10 from the public demo &mdash; not a mockup.</span> <b>HeronWatch, one of the five live proof surfaces. Dated capture manifest in assets/product/watch/.</b></figcaption>
+        </figure>
       </section>
 
       <section id="services" class="hire section-pad">
@@ -125,11 +132,11 @@
             <p class="hire-lede">Engagements are scoped around a working demo of your system, not slideware. You see the thing run against your reality before anything is called done.</p>
             <div class="hire-proof">
               <p><b>Proof, not promises.</b><br />
-                <a href="https://github.com/ChrisWBurt-2020/task-fabric-svn">Task Fabric</a> &mdash; durable task orchestration with ledger-grade auditability: 416 tests (223 Rust + 193 Python tests) <span aria-hidden="true">&nearr;</span>
+                <a href="https://github.com/ChrisWBurt-2020/task-fabric-svn">Task Fabric</a> &mdash; durable task orchestration with ledger-grade auditability: 416 tests (223 Rust + 193 Python), verified 2026-10-23 <span aria-hidden="true">&nearr;</span>
               </p>
             </div>
             <div class="hire-cta">
-              <a class="button button-lime" href="mailto:chris@quantumheronlabs.com">Start a conversation <span>↗</span></a>
+              <a class="text-cta" href="#pilot-brief">Start with the pilot brief &darr;</a>
               <span class="hire-note">1099/C2C &middot; Remote &middot; Scoped, fixed-outcome work</span>
             </div>
           </div>
@@ -179,11 +186,21 @@
               <div class="price">$5,000</div>
               <p>Two to four weeks, one workflow, one fixed fee. If it runs long, that&rsquo;s my risk &mdash; the price doesn&rsquo;t move.</p>
             </div>
-            <div class="hire-cta">
-              <a class="button button-lime" href="mailto:chris@quantumheronlabs.com?subject=Field%20Service%20Workflow%20Pilot">Start a conversation <span>↗</span></a>
+            <form class="pilot-brief" id="pilot-brief" action="mailto:chris@quantumheronlabs.com" method="post" enctype="text/plain" data-pilot-brief>
+              <h3>Start with the pilot brief</h3>
+              <p class="brief-intro">Four questions &mdash; the same ones I&rsquo;d ask by email. Submitting opens your email client with the brief composed and addressed to me; nothing is sent until you press send there, and nothing is stored on this site.</p>
+              <label for="brief-workflow">What workflow is failing?</label>
+              <textarea id="brief-workflow" name="workflow" rows="3" required></textarea>
+              <label for="brief-users">Who uses it?</label>
+              <input id="brief-users" name="users" type="text" required />
+              <label for="brief-systems">What systems or documents are involved?</label>
+              <textarea id="brief-systems" name="systems" rows="2"></textarea>
+              <label for="brief-success">What would a successful pilot demonstrate?</label>
+              <textarea id="brief-success" name="success" rows="2"></textarea>
+              <button class="button button-lime" type="submit">Compose the email <span>&nearr;</span></button>
+              <p class="brief-alt">Prefer a blank email? <a href="mailto:chris@quantumheronlabs.com?subject=Field%20Service%20Workflow%20Pilot">chris@quantumheronlabs.com</a> &mdash; the direct address stays the secondary path.</p>
               <span class="hire-note">1099/C2C &middot; REMOTE-FIRST &middot; YOU OWN EVERYTHING BUILT</span>
-            </div>
-            <p class="email-hint">In your email: what workflow is failing, who uses it, what systems or documents are involved, and what a successful pilot would demonstrate.</p>
+            </form>
           </div>
           <ul class="hire-services reveal">
             <li><b>What&rsquo;s included</b><p>A private working prototype built around one of your real workflows &mdash; your documents, your process, not a canned demo. Mobile capture: a technician speaks or photographs and it becomes structured job evidence. Grounded answers from your manuals and SOPs, with the source shown. Durable tasks and follow-ups that don&rsquo;t fall through. And evidence of everything: what was captured, what the system did, what needed a human decision, what failed. Built from the same arms above: verified reasoning over your documents, governed field action, and local-first deployment on your infrastructure or mine &mdash; your choice.</p></li>
@@ -230,7 +247,7 @@
     </main>
 
     <footer>
-      <div class="footer-mark">Quantum Heron Labs · 2026 · BUILD 2026.11.10.2</div>
+      <div class="footer-mark">Quantum Heron Labs · 2026 · BUILD 2026.11.12.1</div>
       <div><b>Quantum Heron Labs</b><p>AI agent harness contracting — 1099/C2C, through Quantum Heron Labs LLC.</p></div>
       <nav aria-label="Footer"><a href="mailto:chris@quantumheronlabs.com">Work with me</a><a href="platform/">Platform</a><a href="privacy/">Privacy</a><a href="https://watch.quantumheronlabs.com">Watch ↗</a><a href="https://heronfeed.quantumheronlabs.com">Feed ↗</a><a href="https://graph.quantumheronlabs.com">Graph ↗</a><span title="Private — available on tailnet only">Learn 🔒</span><a href="https://heronclient.quantumheronlabs.com">Client ↗</a><a href="#top">Top ↑</a></nav>
     </footer>

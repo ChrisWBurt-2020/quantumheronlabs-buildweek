@@ -314,7 +314,7 @@ footer { min-height: 220px; display: grid; grid-template-columns: .4fr .9fr 1.2f
 .footer-mark { width: 100px; height: 100px; display: grid; place-items: center; border: 1px solid var(--dark-line); border-radius: 50%; color: var(--lime); font-family: var(--mono); font-size: 10px; }
 footer b { font-family: var(--serif); font-size: 24px; font-weight: 400; }
 footer p { color: #9fa8a3; font-size: 11px; }
-footer nav { display: flex; justify-content: flex-end; gap: 30px; font-size: 11px; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px 30px; font-size: 11px; }
 footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
 
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }

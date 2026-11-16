@@ -1,0 +1,98 @@
+/* border-beam.css — BorderBeam motif, web (CSS) equivalent.
+ *
+ * Estate spec: ~/workspace/borderbeam-motif/MOTIF.md (adopted 2026-11-12).
+ * Android twin: vendored BorderBeam component (AGSL shader), HeronGold only.
+ *
+ * Rules encoded here:
+ *  - Single colour ONLY: HeronGold #CFA85C (--beam-gold). No rainbow ring.
+ *  - State, never decoration: inactive = the element's plain hairline
+ *    border. Add .beam-active (bound to a REAL live state) to light it.
+ *  - Slow lap: --beam-duration, 6s default.
+ *  - prefers-reduced-motion: still beam, no rotation.
+ *  - Test-still: html.beam-still or html[data-beam="still"] freezes every
+ *    beam (screenshots / Playwright / UIAutomator-style captures).
+ *  - At most ONE .beam-active element per screen — enforced by the app,
+ *    not by CSS (see border-beam-usage.md).
+ *
+ * No dependencies, no JavaScript required for the effect itself.
+ */
+
+/* Registered custom property so --beam-angle can be interpolated by the
+ * keyframe animation (a smooth rotating conic gradient). Browsers without
+ * @property support keep --beam-angle at its static fallback value, so the
+ * beam degrades to a STILL gold segment on the border — never to nothing,
+ * never to a full ring. */
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:root {
+  --beam-gold: #CFA85C;
+  --beam-duration: 6s;
+  --beam-width: 1.5px;
+  --beam-glow: rgba(207, 168, 92, 0.45);
+}
+
+/* Base hook: any element that can carry a beam. Position + radius are all
+ * the effect needs; the element keeps its own normal hairline border. */
+.beam {
+  position: relative;
+}
+
+/* The travelling segment: a conic-gradient ring masked down to the border
+ * box. Most of the lap is transparent; ~36deg of arc near the head is gold,
+ * fading in — one segment travelling, not a lit ring. */
+.beam-active {
+  /* Soft outer glow, following the element (the segment's own glow is on
+   * the pseudo-element below). */
+  box-shadow: 0 0 14px 0 var(--beam-glow);
+}
+
+.beam-active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--beam-width);
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    transparent 288deg,
+    rgba(207, 168, 92, 0) 306deg,
+    rgba(207, 168, 92, 0.55) 336deg,
+    var(--beam-gold) 356deg,
+    rgba(207, 168, 92, 0.85) 360deg
+  );
+  /* Mask everything except the padded ring (= the border ring). */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 5px var(--beam-glow));
+  pointer-events: none;
+  animation: beam-rotate var(--beam-duration) linear infinite;
+}
+
+@keyframes beam-rotate {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+/* Reduced motion: still beam (segment parked at the top), never moving. */
+@media (prefers-reduced-motion: reduce) {
+  .beam-active::before {
+    animation: none;
+  }
+}
+
+/* Test-still: freeze ALL beams from the root, for screenshots/tests.
+ * Either signal works: <html class="beam-still"> or
+ * <html data-beam="still">. */
+html.beam-still .beam-active::before,
+html[data-beam="still"] .beam-active::before {
+  animation: none;
+}

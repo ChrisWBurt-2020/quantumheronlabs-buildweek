@@ -81,3 +81,21 @@ briefForm?.addEventListener('submit', (event) => {
   const body = encodeURIComponent(lines.join('\n\n'));
   window.location.href = `mailto:chris@quantumheronlabs.com?subject=${subject}&body=${body}`;
 });
+
+// BorderBeam motif (estate spec: borderbeam-motif/MOTIF.md, HeronGold
+// #CFA85C only, state never decoration). The pilot-brief form is this
+// site's ONLY qualifying live state, so it is the only element that can
+// beam. Binding choice: the FORM CONTAINER beams while any field inside
+// it is focused — one beam per screen, never one per field, and never on
+// any static/marketing block. focusin/focusout bubble: moving between
+// fields keeps the beam on; it drops only when focus leaves the fields.
+const briefFieldSelector = 'input, textarea';
+briefForm?.addEventListener('focusin', (event) => {
+  if (event.target.matches(briefFieldSelector)) briefForm.classList.add('beam-active');
+});
+briefForm?.addEventListener('focusout', (event) => {
+  const next = event.relatedTarget;
+  if (!(next instanceof Element) || !briefForm.contains(next) || !next.matches(briefFieldSelector)) {
+    briefForm.classList.remove('beam-active');
+  }
+});

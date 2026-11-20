@@ -40,7 +40,7 @@ svg { display: block; }
 .skip-link { position: fixed; z-index: 1000; top: -100px; left: 10px; padding: 10px 14px; color: var(--paper); background: var(--ink); }
 .skip-link:focus { top: 10px; }
 
-.site-header { position: fixed; z-index: 100; top: 0; left: 0; right: 0; height: 88px; display: flex; align-items: center; justify-content: space-between; padding: 0 4vw; background: rgba(23,35,41,.88); border-bottom: 1px solid transparent; backdrop-filter: blur(16px); transition: height .25s ease, transform .3s ease, border-color .25s ease; }
+.site-header { position: fixed; z-index: 100; top: 0; left: 0; right: 0; height: 88px; display: flex; align-items: center; justify-content: space-between; padding: 0 4vw; background: rgba(23,35,41,.96); border-bottom: 1px solid transparent; backdrop-filter: blur(20px); transition: height .25s ease, transform .3s ease, border-color .25s ease; }
 .site-header.is-compact { height: 68px; border-color: var(--line); }
 .site-header.is-hidden { transform: translateY(-105%); }
 .brand { display: flex; align-items: center; gap: 12px; }
@@ -315,16 +315,16 @@ footer { min-height: 220px; display: grid; grid-template-columns: .4fr .9fr 1.2f
 footer b { font-family: var(--serif); font-size: 24px; font-weight: 400; }
 footer p { color: #9fa8a3; font-size: 11px; }
 footer nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px 30px; font-size: 11px; }
-footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
+footer nav a, footer nav span { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
 /* Tap targets (Design Steward finding, 2026-11-17): every link in the shared
    header nav and footer nav carries a 48px minimum target height, on all
    pages that share this chrome. Text size and layout are unchanged; the
    header hover underline offset is adjusted to stay under the link text. */
-.site-nav > a, footer nav a { display: inline-flex; align-items: center; min-height: 48px; }
+.site-nav > a, footer nav a, footer nav span { display: inline-flex; align-items: center; min-height: 48px; }
 .site-nav > a:not(.nav-cta)::after { bottom: 11px; }
 .brand { min-height: 48px; }
 
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.reveal { opacity: .3; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 1100px) {
@@ -600,3 +600,6 @@ footer nav a { padding-bottom: 6px; border-bottom: 1px solid var(--dark-line); }
 .pilot-price b { font-family: var(--mono); font-size: 10px; font-weight: 800; letter-spacing: .14em; color: var(--ink-mute); }
 .pilot-price .price { font-family: var(--serif); font-size: clamp(44px, 4vw, 60px); line-height: 1; letter-spacing: -.03em; margin: 10px 0 8px; }
 .pilot-price p { margin: 0; color: var(--ink-mute); font-size: 13px; line-height: 1.6; }
+
+/* Companion clearance: never overlap the footer (Top link row) */
+html.footer-in-view heron-companion { visibility: hidden; }

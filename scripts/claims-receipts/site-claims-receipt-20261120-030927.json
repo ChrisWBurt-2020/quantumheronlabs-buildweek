@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-11-20T08:09:27Z",
+  "overall": "VERIFIED",
+  "tally": {
+    "VERIFIED": 1,
+    "FALSE": 0,
+    "UNPROVEN": 0
+  },
+  "results": [
+    {
+      "kind": "repo",
+      "subject": "ChrisWBurt-2020/task-fabric-svn",
+      "claim": "repo ChrisWBurt-2020/task-fabric-svn exists and is public",
+      "source": "https://quantumheronlabs.com/",
+      "block": "GHLINK(https://github.com/ChrisWBurt-2020/task-fabric-svn|Task Fabric)  \u2014 durable task orchestration on an append-only, sequence-numbered task ledger: 416 tests (223 Rust + 193 Python) at commit abb3355. Reproduce: README \u2192 Tests.  \u2197",
+      "verdict": "VERIFIED",
+      "evidence": "GitHub API 200, private=false, pushed_at=2026-11-15T02:34:11Z"
+    }
+  ]
+}

@@ -595,6 +595,7 @@ footer nav a, footer nav span { padding-bottom: 6px; border-bottom: 1px solid va
 .hire-pending { color: var(--ink-mute); }
 .hire-cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; }
 .hire-note { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-mute); }
+@media (min-width: 901px) { #pilot .hire-services { position: sticky; top: 110px; } }
 @media (max-width: 900px) { .hire-grid { grid-template-columns: 1fr; } }
 .pilot-price { margin-top: 38px; border: 1px solid var(--line); padding: 24px 26px; max-width: 520px; }
 .pilot-price b { font-family: var(--mono); font-size: 10px; font-weight: 800; letter-spacing: .14em; color: var(--ink-mute); }

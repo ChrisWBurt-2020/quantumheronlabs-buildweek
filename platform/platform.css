@@ -6,3 +6,21 @@
   .stage-content .loop-node { grid-template-columns: 26px minmax(0, 1fr); }
   .stage-content .loop-node .node-tag { display: none; }
 }
+
+/* Pass B (2026-11-19 review): the six "Since July" products are copy-only.
+   The shared .product grid reserves a 1.28fr media column for a screenshot
+   that does not exist for these private systems, which stranded the copy in
+   a ~35% column beside ~65% empty canvas. Rebalance: copy block left,
+   feature list right, both columns used. No screenshots are added — the
+   July fixture captures were retired as stale on this page's own rule. */
+@media (min-width: 1101px) {
+  #now .product { grid-template-columns: .85fr 1.15fr; align-items: start; }
+  #now .product-copy { display: contents; }
+  #now .product-number { grid-column: 1; grid-row: 1; }
+  #now .product-copy h3 { grid-column: 1; grid-row: 2; }
+  #now .product-copy > p { grid-column: 1; grid-row: 3; }
+  #now .feature-list { grid-column: 2; grid-row: 1 / span 3; align-self: center; margin: 0; max-width: none; width: 100%; }
+  /* Capture-only articles (Watch / Feed) go full width so the dated
+     screenshots are legible without zooming. */
+  #original .product:has(> .product-capture) { grid-template-columns: 1fr; }
+}

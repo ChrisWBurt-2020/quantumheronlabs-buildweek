@@ -29,7 +29,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('is-visible');
     revealObserver.unobserve(entry.target);
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 80px 0px' });
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
@@ -99,3 +99,14 @@ briefForm?.addEventListener('focusout', (event) => {
     briefForm.classList.remove('beam-active');
   }
 });
+
+// Companion clearance: hide the fixed Heron companion while the footer is
+// on screen so it can never overlap the footer's Top link.
+const footerEl = document.querySelector('footer');
+if (footerEl && 'IntersectionObserver' in window) {
+  new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      document.documentElement.classList.toggle('footer-in-view', entry.isIntersecting);
+    });
+  }, { threshold: 0.05 }).observe(footerEl);
+}

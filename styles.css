@@ -320,9 +320,23 @@ footer nav a, footer nav span { padding-bottom: 6px; border-bottom: 1px solid va
    header nav and footer nav carries a 48px minimum target height, on all
    pages that share this chrome. Text size and layout are unchanged; the
    header hover underline offset is adjusted to stay under the link text. */
-.site-nav > a, footer nav a, footer nav span { display: inline-flex; align-items: center; min-height: 48px; }
+/* Tap-target widths + standalone CTAs (Design Steward, 2026-11-26): the 2026-11-17
+   rule made chrome links 48px tall but several stayed under 48px wide
+   (footer "Pilot", "Top ↑", "Feed ↗", …). The shared chrome rule now also
+   carries a 48px minimum width with centred content, and footer links get
+   horizontal padding (the footer nav wraps, so padding cannot overflow it;
+   header links rely on the minimum width alone so the fixed header cannot
+   be pushed wider at intermediate viewports). The standalone email CTAs
+   (.text-cta mailto link and the two .email-cta links inside .email-hint
+   paragraphs) and the /platform/ demo CTAs (.problem-rail article links and
+   the .text-link demo link) get the same 48px floor via padded inline-flex
+   boxes. No copy changes; visual identity is unchanged beyond the padding. */
+.site-nav > a, footer nav a, footer nav span { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 48px; }
+footer nav a, footer nav span { padding-inline: 10px; }
 .site-nav > a:not(.nav-cta)::after { bottom: 11px; }
-.brand { min-height: 48px; }
+.brand { min-height: 48px; min-width: 48px; }
+a.text-cta[href^="mailto:"], .email-hint a.email-cta { display: inline-flex; align-items: center; min-height: 48px; min-width: 48px; padding: 12px 14px; }
+.problem-rail p a, a.text-link { display: inline-flex; align-items: center; min-height: 48px; min-width: 48px; padding: 12px; }
 
 .reveal { opacity: .3; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
